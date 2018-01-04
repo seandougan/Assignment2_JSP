@@ -20,7 +20,6 @@ public class ViewDepartments_DA {
 	
 	public static List<Department> getDepartments () {
 		//Returns a list of all departments in the database
-		//Currently does not work
 		List<Department> departments = new ArrayList<Department>();
 		
 		try {

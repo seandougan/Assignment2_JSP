@@ -39,19 +39,6 @@ public class HomepageServlet extends HttpServlet {
 			
 			departments = ViewDepartments_DA.getDepartments();
 			
-			// Works for testing
-			Department department1 = new Department();
-			department1.setName("Test Floor");
-			department1.setFloor("Floor 1");
-			Department department2 = new Department();
-			department2.setName("Testing Floor");
-			department2.setFloor("Floor 3");
-			Department department3 = new Department();
-			department3.setName("Tester Floor");
-			department3.setFloor("floor 3");
-			departments.add(department1);
-			departments.add(department2);
-			departments.add(department3);
 			request.setAttribute("departments", departments);
 			request.getRequestDispatcher("/WEB-INF/ViewDepartments.jsp").forward(request, response);
 		}

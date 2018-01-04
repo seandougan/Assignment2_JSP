@@ -24,11 +24,7 @@ CREATE TABLE DEPARTMENT
 (
 	department_ID int(11) AUTO_INCREMENT PRIMARY KEY,
     department_Name VARCHAR(255) UNIQUE,
-    department_Description VARCHAR(255),
-    department_Room INT(5),
-    department_Floor INT(5),
-    department_Head VARCHAR(255),
-    department_Extension INT(5) UNIQUE
+    department_Floor INT(5)
 );
 
 #EMPLOYEE
@@ -91,3 +87,13 @@ INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
 #add michael van dyke to users
 INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
 ('Michael', 'Van Dyke', 'michael.vandyke@georgebrown.ca', 'student', 'michael', 'vandyke');
+
+#Add dummy floors
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Lobby', 1);
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Web Development', 2);
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Database Development', 4);
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Human Resources', 6);
