@@ -4,4 +4,8 @@
   <welcome-file-list>
     <welcome-file>CreateReportTemplate.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+  	<servlet-name>CreateReportTermplateServlet</servlet-name>
+  	<servlet-class>michael.CreateReportTermplateServlet</servlet-class>
+  </servlet>
 </web-app>

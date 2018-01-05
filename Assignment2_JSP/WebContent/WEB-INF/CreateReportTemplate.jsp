@@ -16,10 +16,14 @@
 <body>
 	<div id="header"><h1>Create Report Template</h1></div>
 
-<table>
+<table align="center">
+
+
 <tr>
 	<td>
+	
 	<p>Criteria 1</p> <input type="text" name="crit1"></input>
+	
 	</td>
 </tr>
 
