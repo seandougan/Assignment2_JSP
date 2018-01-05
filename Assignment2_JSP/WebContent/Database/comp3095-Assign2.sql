@@ -38,7 +38,7 @@ CREATE TABLE EMPLOYEE
     employee_Email VARCHAR(20),
     employee_PhoneNumber VARCHAR(20),
     employee_YearHired VARCHAR (4),
-	FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
+	FOREIGN KEY (department_IDdepartment_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
 );
 
 #GROUPS

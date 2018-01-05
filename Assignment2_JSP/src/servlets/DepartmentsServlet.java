@@ -19,29 +19,28 @@ import javax.servlet.http.HttpServletResponse;
 import database.ViewDepartments_DA;
 import utility.Department;
 
-/**
- * Servlet implementation class HomepageServlet
- */
-@WebServlet("/HomepageServlet")
-public class HomepageServlet extends HttpServlet {
+@WebServlet("/DepartmentsServlet")
+public class DepartmentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public HomepageServlet() {
+    public DepartmentsServlet() {
         super();
     }
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String buttonCheck = request.getParameter("nextPage");
-		System.out.println("buttonCheck = " + buttonCheck);
-		
-		if (buttonCheck.equals("Departments")) {
-			System.out.println("Entring Departments.jsp");
-			request.getRequestDispatcher("/WEB-INF/Departments.jsp").forward(request, response);
+		String pageSelect = request.getParameter("pageSelect");
+		if (pageSelect.equals("Enter Department")) {
+			request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
+		}
+		else {
+			List<Department> departments = new ArrayList<>();
+			
+			departments = ViewDepartments_DA.getDepartments();
+			
+			request.setAttribute("departments", departments);
+			request.getRequestDispatcher("/WEB-INF/ViewDepartments.jsp").forward(request, response);
 		}
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
+
 }

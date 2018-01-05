@@ -7,21 +7,12 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import database.ViewDepartments_DA;
-import utility.Department;
-
-/**
- * Servlet implementation class ViewDepartmentsServlet
- */
 
 @WebServlet("/ViewDepartmentsServlet")
 public class ViewDepartmentsServlet extends HttpServlet {

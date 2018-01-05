@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>Homepage</h1>
-<form action="HomepageServlet"><input type="submit" value="ViewDepartments" name="nextPage"></form>
+<form action="HomepageServlet"><input type="submit" value="Departments" name="nextPage"></form>
 </body>
 </html>

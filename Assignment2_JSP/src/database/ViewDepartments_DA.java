@@ -49,5 +49,27 @@ public class ViewDepartments_DA {
 		System.out.println("Returning " + departments.size() + " departments");
 		return departments;
 	}
+
+	public static boolean enterDepartment(String deptName, int floor) {
+		boolean successCheck = false;
+		try {
+			System.out.println("Creating connection...");
+			Connection con = Database.startConnection();
+			String query = "INSERT INTO department(department_Name, department_Floor)"
+					+ " VALUES('" + deptName + "', " + floor + ");";
+			System.out.println("Creating statement...");
+			Statement statement = con.createStatement();
+			System.out.println("Running query - " + query);
+			statement.executeUpdate(query);		
+		} catch (Exception e) {
+			System.out.println("Error!");
+			System.out.println(e);
+			return successCheck;
+		}
+		successCheck = true;
+		return successCheck;
 	
+	}
 }
+	
+
