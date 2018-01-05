@@ -20,10 +20,49 @@
 
 
 <tr>
+	<span>Section 1</span><input type="text" name="crit1"></input>
 	<td>
 	
-	<p>Criteria 1</p> <input type="text" name="crit1"></input>
-	
+	<span>Criteria 1</span> <input type="text" name="crit1"></input>
+<select name="max">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>															<br> 
+	<span>Criteria 2</span> <input type="text" name="crit2"></input>
+	<select name="max">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>															<br> 
+	<span>Criteria 3</span> <input type="text" name="crit3"></input>
+			<select name="max">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>														<br> 
+	<span>Criteria 4</span> <input type="text" name="crit4"></input>
+				<select name="max">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>													<br> 
+	<span>Criteria 5</span> <input type="text" name="crit5"></input>
+	<select name="max">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>	<br>
 	</td>
 </tr>
 
