@@ -11,6 +11,12 @@
 
 }
 
+#sect{
+
+align: "right";
+
+}
+
 </style>
 </head>
 <body>
@@ -19,8 +25,8 @@
 <table align="center">
 
 
-<tr>
-	<span>Section 1</span><input type="text" name="crit1"></input>
+<tr id="sect1">
+	<span>Section 1</span><input type="text" name="sect1"></input>
 	<td>
 	
 	<span>Criteria 1</span> <input type="text" name="crit1"></input>
