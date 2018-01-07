@@ -31,7 +31,9 @@
 			<th>Last Name</th>
 			<th>First Name</th>
 			<th>Employee Num.</th>
-			<th>Present</th>
+			<th>December 1, 2017</th>
+			<th>December 3, 2017</th>
+			<th>December 4, 2017</th>
 		</tr>
 	</table>
 

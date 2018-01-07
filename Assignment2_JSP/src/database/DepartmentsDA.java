@@ -2,7 +2,7 @@
  * Date: January 4th, 2018,
  * Group Members: Sean Dougan - 101029633, Matthew McCarthy - 101009842, Michael Van Dyke - 101008864
  * Gregory Uchitel - 100322200, James Massle - 101025072
- * Class Description: 
+ * Class Description: Data access class for department pages
  */
 package database;
 
@@ -19,19 +19,20 @@ public class DepartmentsDA {
 	
 	
 	public static List<Department> getDepartments () {
-		//Returns a list of all departments in the database
+		//Returns all rows in the DEPARTMENT table as a list of Department objects
 		List<Department> departments = new ArrayList<Department>();
 		
 		try {
 			ResultSet results;
 			System.out.println("Creating connection...");
 			Connection con = Database.startConnection();
-			String query = "SELECT * from department";
+			String query = "SELECT * from DEPARTMENT";
 			System.out.println("Creating statement...");
 			Statement statement = con.createStatement();
 			System.out.println("Running query...");
 			results = statement.executeQuery(query);		
 			
+			//Create the list of departments
 			while (results.next()) {
 				System.out.println(" - Creating DEPARTMENT - ");
 				Department department = new Department ();

@@ -31,21 +31,21 @@ CREATE TABLE DEPARTMENT
 CREATE TABLE EMPLOYEE
 (
 	employee_ID INT (11) AUTO_INCREMENT PRIMARY KEY,
-  department_ID_FK INT (11),
+	department_ID_FK INT (11),
     employee_FirstName VARCHAR(255),
     employee_LastName VARCHAR(255),
     employee_Role VARCHAR(20),
     employee_Email VARCHAR(20),
     employee_PhoneNumber VARCHAR(20),
     employee_YearHired VARCHAR (4),
-	FOREIGN KEY (department_IDdepartment_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
+	FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
 );
 
 #GROUPS
 CREATE TABLE GROUPS
 (
 	group_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
-  department_ID_FK INT (11) NOT NULL ,
+	department_ID_FK INT (11) NOT NULL ,
     group_Name VARCHAR(255) UNIQUE,
     group_Manager VARCHAR(255),
     group_Role VARCHAR(55),
@@ -57,10 +57,20 @@ CREATE TABLE GROUPS
 CREATE TABLE EMPLOYEE_GROUPS
 (
 	employee_group_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
-  department_ID_FK INT (11),
-  employee_ID_FK INT (11),
+	department_ID_FK INT (11),
+	employee_ID_FK INT (11),
 	FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE,
 	FOREIGN KEY (employee_ID_FK) REFERENCES EMPLOYEE(employee_ID) ON DELETE CASCADE
+);
+
+CREATE TABLE ATTENDANCE
+(
+	attendance_ID INT (11) AUTO_INCREMENT PRIMARY KEY,
+    employee_ID_FK INT (11) NOT NULL,
+    present1 BIT, #0 represents not present, 1 represents present
+    present2 BIT,
+    present3 BIT,
+    FOREIGN KEY (employee_ID_FK) REFERENCES EMPLOYEE(employeE_ID) ON DELETE CASCADE
 );
 
 

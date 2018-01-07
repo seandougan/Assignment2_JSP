@@ -2,7 +2,7 @@
  * Date: January 4th, 2018,
  * Group Members: Sean Dougan - 101029633, Matthew McCarthy - 101009842, Michael Van Dyke - 101008864
  * Gregory Uchitel - 100322200, James Massle - 101025072
- * Class Description: 
+ * Class Description: Servlet responsible for Departments.jsp
  */
 package servlets;
 
