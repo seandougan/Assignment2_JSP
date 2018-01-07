@@ -7,17 +7,12 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import database.ViewDepartments_DA;
-import utility.Department;
 
 /**
  * Servlet implementation class HomepageServlet
@@ -31,12 +26,16 @@ public class HomepageServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String buttonCheck = request.getParameter("nextPage");
+		String buttonCheck = request.getParameter("pageSelect");
 		System.out.println("buttonCheck = " + buttonCheck);
 		
 		if (buttonCheck.equals("Departments")) {
-			System.out.println("Entring Departments.jsp");
+			System.out.println("Entering Departments.jsp");
 			request.getRequestDispatcher("/WEB-INF/Departments.jsp").forward(request, response);
+		}
+		else if (buttonCheck.equals("Attendance")) {
+			System.out.println("Entering Attendance.jsp");
+			request.getRequestDispatcher("/WEB-INF/Attendance.jsp").forward(request, response);
 		}
 	}
 	

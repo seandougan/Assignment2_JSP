@@ -15,7 +15,7 @@ import java.util.List;
 import utility.Database;
 import utility.Department;
 
-public class ViewDepartments_DA {
+public class DepartmentsDA {
 	
 	
 	public static List<Department> getDepartments () {

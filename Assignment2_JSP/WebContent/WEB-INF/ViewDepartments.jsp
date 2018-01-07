@@ -5,25 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Departments</title>
-<style>
-	table {
-	    border-collapse: collapse;
-	    text-align: center;
-	}
-	
-	td, th {
-	    border: 1px solid black;
-	    text-align: left;
-	    padding: 1px;
-	}
-	h1 {
-		text-align: center;
-	}
-	input {
-		margin: auto;
-		display: block;
-	}
-</style>
+	<style>
+		table {
+		    border-collapse: collapse;
+		    text-align: center;
+		}
+		
+		td, th {
+		    border: 1px solid black;
+		    text-align: left;
+		    padding: 1px;
+		}
+		h1 {
+			text-align: center;
+		}
+		input {
+			margin: auto;
+			display: block;
+		}
+	</style>
 </head>
 <body>
 

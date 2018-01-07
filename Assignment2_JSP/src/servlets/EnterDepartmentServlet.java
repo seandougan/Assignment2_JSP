@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.ViewDepartments_DA;
+import database.DepartmentsDA;
 
 @WebServlet("/EnterDepartmentServlet")
 public class EnterDepartmentServlet extends HttpServlet {
@@ -23,20 +23,26 @@ public class EnterDepartmentServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String deptName = request.getParameter("deptName");
-		String floor = request.getParameter("floor");
-		int floorNum = Integer.parseInt(floor);
-		Boolean successCheck = ViewDepartments_DA.enterDepartment(deptName, floorNum);
-		System.out.println(successCheck);
-		if (successCheck) {
-			//Success page
-			request.setAttribute("successCheck", successCheck);
+		String action = request.getParameter("action");
+		if (action.equals("Submit")) {
+			String deptName = request.getParameter("deptName");
+			String floor = request.getParameter("floor");
+			int floorNum = Integer.parseInt(floor);
+			Boolean successCheck = DepartmentsDA.enterDepartment(deptName, floorNum);
+			System.out.println(successCheck);
+			if (successCheck) {
+				//Success page
+				request.setAttribute("successCheck", successCheck);
+			}
+			else {
+				//Failure message
+				request.setAttribute("successCheck", successCheck);
+			}
+			request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
 		}
 		else {
-			//Failure message
-			request.setAttribute("successCheck", successCheck);
+			request.getRequestDispatcher("/WEB-INF/Homepage.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

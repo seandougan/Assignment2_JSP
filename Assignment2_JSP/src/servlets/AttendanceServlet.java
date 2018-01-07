@@ -7,36 +7,29 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.DepartmentsDA;
-import utility.Department;
-
-@WebServlet("/DepartmentsServlet")
-public class DepartmentsServlet extends HttpServlet {
+@WebServlet("/AttendanceServlet")
+public class AttendanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public DepartmentsServlet() {
+    public AttendanceServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pageSelect = request.getParameter("pageSelect");
-		if (pageSelect.equals("Enter Department")) {
-			request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
+		String buttonCheck = request.getParameter("pageSelect");
+		System.out.println("buttonCheck = " + buttonCheck);
+		
+		if (buttonCheck.equals("View Attendance")) {
+			System.out.println("Entring ViewAttendance.jsp");
+			request.getRequestDispatcher("/WEB-INF/ViewAttendance.jsp").forward(request, response);
 		}
-		else {
-			List<Department> departments = new ArrayList<>();
-			
-			departments = DepartmentsDA.getDepartments();
-			
-			request.setAttribute("departments", departments);
-			request.getRequestDispatcher("/WEB-INF/ViewDepartments.jsp").forward(request, response);
+		else if (buttonCheck.equals("Enter Attendance")) {
+			System.out.println("Entring EnterAttendance.jsp");
+			request.getRequestDispatcher("/WEB-INF/EnterAttendance.jsp").forward(request, response);
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

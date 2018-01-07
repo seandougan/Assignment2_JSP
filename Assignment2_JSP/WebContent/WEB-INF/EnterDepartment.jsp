@@ -10,7 +10,7 @@
 			margin: auto;
 			display: block;
 		}
-		h1, b {
+		h1, p {
 			text-align: center;
 		}
 </style>
@@ -30,9 +30,11 @@
 	%>
 
 <form action="EnterDepartmentServlet">
-	<b>Department Name</b><input type="text" name="deptName">
-	<b>Department Floor</b><input type="text" name="floor">
-	<input type="submit" value="Submit">
+	<p><b>Department Name</b></p>
+	<input type="text" name="deptName">
+	<p><b>Department Floor</b></p><input type="text" name="floor">
+	<input type="submit" value="Submit" name="action">
+	<input type="submit" value="Home" name="action">
 </form>
 </body>
 </html>
