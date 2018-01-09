@@ -17,6 +17,7 @@ public class CookieFinder {
 
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("comp3095UserName")) {
+					
 					setName(cookie.getValue());
 					System.out.println("Cookie found!");
 					break;
@@ -33,7 +34,7 @@ public class CookieFinder {
 			return this.name;
 		}
 	}
-
+ 
 	private void setName(String name) {
 		
 		this.name = name;

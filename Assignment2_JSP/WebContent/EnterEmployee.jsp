@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ page import="utility.SessionAuthentication" %>
+<% 
+//GRAB SESSION
+HttpSession ss = request.getSession();
+//CHECK SESSION
+if(SessionAuthentication.authenticateSession(ss)){
+	System.out.println("User is not logged in or session expired, relog please");
+	response.sendRedirect("index.jsp");
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
