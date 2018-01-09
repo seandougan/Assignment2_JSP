@@ -4,22 +4,24 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Homepage</title>
+	<title>Departments</title>
 	<style>
 		input {
 			margin: auto;
 			display: block;
 		}
-		h1{
+		h1, h2 {
 			text-align: center;
 		}
 	</style>
 </head>
 <body>
-	<h1>Homepage</h1>
-	<form action="HomepageServlet">
-		<input type="submit" value="Departments" name="pageSelect">
-		<input type="submit" value="Attendance" name="pageSelect">
-	</form>
+	<h1>Departments Page</h1>
+	
+	<h2>Choose a page to go to</h2>
+	 <form action="DepartmentsServlet">
+	 	<input type="submit" name="pageSelect" value="Enter Department"> 
+	 	<input type="submit" name="pageSelect" value="View Departments">
+	 </form>
 </body>
 </html>
