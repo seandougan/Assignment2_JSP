@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@ page import="utility.SessionAuthentication" %>
+     <%@ page import="java.sql.*" %>
+     <%@ page import="utility.Database" %>
 <% 
 //GRAB SESSION
 HttpSession ss = request.getSession();
@@ -31,8 +33,31 @@ if(SessionAuthentication.authenticateSession(ss)){
 			Last Name: <input type = 'text' name = 'lastName' id = 'lastName' value = '' class='form-control'> <br><br>
 			Employee #: <input type = 'text' name = 'employeeNum' id = 'employeeNum' value = '' class='form-control'> <br><br>
 			Email: <input type = 'text' name = 'email' id = 'email' value = '' class='form-control'> <br><br>
-			
-			
+			<label>Department</label>
+			<select name="departments" id="depar" name="department">
+
+<% Connection con = Database.startConnection();
+
+ResultSet rs = null;
+Statement statement = null;
+String query = "SELECT department_Name FROM department";
+String departmentName = request.getParameter("department_Name");
+
+statement = con.createStatement();
+rs = statement.executeQuery(query);	
+%>
+
+<%
+while (rs.next()) {
+%>
+
+<option value = '<%=rs.getString("department_Name")%>'><%=rs.getString("department_Name")%></option>
+
+
+<% } %>
+</select>
+<br><br>
+			<label>Year Hired</label>
 			<select name = 'yearHired' id = 'yearHired'>
 				<option value = 'default'>Hire Year</option>
 				<option value = '2017'>2017</option>
@@ -48,6 +73,7 @@ if(SessionAuthentication.authenticateSession(ss)){
 				<option value = '2007'>2007</option>
 			</select>
 			<br><br>
+			<label>Position</label>
 			<select name = 'jobPosition' id = 'jobPosition'>
 				<option value = 'default'>Job Position</option>
 				<option value = 'juniorDeveloper'>Junior Developer</option>

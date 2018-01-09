@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="utility.CookieFinder" %>
+    <% CookieFinder ckF = new CookieFinder(); 
+ 
+//INSTANTIATE SITE COOKIES INTO OBJECT
+	Cookie[] cookies = request.getCookies();
+ %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +28,10 @@
   </button>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="#">Enter Department</a>
+     <div class="dropdown-divider">
     <a class="dropdown-item" href="#">View Department</a>
+    </div>
+
   </div>
 	</div>  
   </li>
@@ -33,7 +42,9 @@
   </button>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="EnterEmployee.jsp">Enter Employee</a>
+     <div class="dropdown-divider">
     <a class="dropdown-item" href="ViewEmployee.jsp">View Employee</a>
+    </div>
   </div>
 	</div>  
   </li>
@@ -44,11 +55,15 @@
   </button>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="#">Enter Group</a>
-    <div class="dropdown-divider"></div>
+    <div class="dropdown-divider">
       <a class="dropdown-item" href="#">View Group</a>
+      </div>
   </div>
   </div>
 	</div>  
+  </li>
+  <li class="pull-right">
+  Logged in as <%= ckF.findCookie(cookies) %> | <a href="DestroySession">Logout</a>
   </li>
     </ul>
   </div>

@@ -9,8 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.*;
 
+import utility.Database;
 import utility.EmployeeDAO;
+import utility.SessionAuthentication;
 import validation.beans.EmployeeValidation;
 
 /**
@@ -41,12 +44,40 @@ public class EmployeeEntry extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		if(SessionAuthentication.authenticateSession(ss)){
+			System.out.println("User is not logged in or session expired, relog please");
+			response.sendRedirect("index.jsp");
+		}
+		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String email = request.getParameter("email");
 		String employeeNum = request.getParameter("employeeNum");
 		String yearHired = request.getParameter("yearHired");
 		String jobPosition = request.getParameter("jobPosition");
+		String departmentnAme = request.getParameter("departments");
+		int departmentID = 0;
+
+
+		Connection con = Database.startConnection();
+		ResultSet rs = null;
+		Statement statement = null;
+		String query = "SELECT department_ID FROM department WHERE department_Name = '" + 
+		departmentnAme + "'";
+		
+		try {
+			statement = con.createStatement();
+			rs = statement.executeQuery(query);	
+		
+			while (rs.next()) {
+				
+				departmentID = rs.getInt("department_ID");
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			return;
+		}
 		//jobPosition
 		
 		//add check for null on this form
@@ -55,7 +86,7 @@ public class EmployeeEntry extends HttpServlet {
 		if(employeeInformation.ValidateName(firstName) && employeeInformation.ValidateName(lastName) && employeeInformation.ValidateEmail(email) && employeeInformation.ValidateNumber(employeeNum))  
 		{
 			// This is calling the Entry method that will insert the fields.
-			EmployeeDAO.EmployeeEntry(firstName, lastName, email, employeeNum, yearHired, jobPosition);
+			EmployeeDAO.EmployeeEntry(firstName, lastName, email, employeeNum, yearHired, jobPosition, departmentID);
 			System.out.println("Data inserted, redirecting to employee entry");
 			
 			PrintWriter pw = response.getWriter();

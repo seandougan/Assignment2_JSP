@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class EmployeeDAO {
 	  
-		  public static void EmployeeEntry(String fName, String lName, String email, String pNumber, String yH, String role){		  
+		  public static void EmployeeEntry(String fName, String lName, String email, String pNumber, String yH, String role, int fk){		  
 	 
 			  
 			// Request Parameters
@@ -35,8 +35,8 @@ public class EmployeeDAO {
 				  Connection con = Database.startConnection();
 					
 					String sql = "INSERT INTO EMPLOYEE" 
-					+ "(employee_FirstName, employee_LastName ,Employee_Role, Employee_Email, employee_PhoneNumber,Employee_YearHired) "
-					+ "VALUES "+ "(?,?,?,?,?,?)";
+					+ "(employee_FirstName, employee_LastName ,Employee_Role, Employee_Email, employee_PhoneNumber,Employee_YearHired, department_ID_FK) "
+					+ "VALUES "+ "(?,?,?,?,?,?,?)";
 					
 					System.out.println("Connecting SQL String to statement");
 					PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -50,6 +50,7 @@ public class EmployeeDAO {
 					preparedStatement.setString(5, pNumber);
 				
 					preparedStatement.setString(6,yH);
+					preparedStatement.setInt(7, fk);
 					// execute insert SQL statement
 					preparedStatement.executeUpdate();
 					System.out.println("Database insert successful!");
