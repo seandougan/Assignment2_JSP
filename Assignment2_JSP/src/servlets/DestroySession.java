@@ -30,7 +30,10 @@ public class DestroySession extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(SessionAuthentication.authenticateSession(ss)){
+		//GRAB SESSION
+		HttpSession sr = request.getSession();
+		//CHECK SESSION
+		if(SessionAuthentication.authenticateSession(sr)){
 			System.out.println("User is not logged in or session expired, relog please");
 			response.sendRedirect("index.jsp");
 		}
