@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="utility.Database" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,6 +33,36 @@ align: "right";
 <body>
 	<div id="header"><h1>Create Report Template</h1></div>
 	
+<form method="post">
+
+<!-- Sean's Combobox-to-Database code -->
+<select name="departments" id="depomans">
+	<% Connection con = Database.startConnection();
+ResultSet rs = null;
+Statement statement = null;
+String query = "SELECT department_Name FROM department";
+String departmentName = request.getParameter("departments");
+System.out.println(departmentName);
+statement = con.createStatement();
+rs = statement.executeQuery(query);	
+%>
+
+<%
+while (rs.next()) {
+%>
+
+<option value = '<%=rs.getString("department_Name")%>' > <%=rs.getString("department_Name")%></option>
+
+
+<% }
+con.close();
+statement.close();
+rs.close();
+%>
+
+</select>
+
+
 	<div id="section">
 <span>Section I<input type="text" name="sect1"></input></span>
 <table align="center">
@@ -39,40 +71,40 @@ align: "right";
 	
 	<td>
 	
-	<span>Criteria 1</span> <input type="text" name="crit1"></input>
-<select name="max">
+	<span>Criteria 1</span> <input type="text" name="crit11"></input>
+	<label><span>Maximum </span></label><select name="max11">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 2</span> <input type="text" name="crit2"></input>
-	<select name="max">
+	<span>Criteria 2</span> <input type="text" name="crit12"></input>
+	<label><span>Maximum </span></label><select name="max12">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 3</span> <input type="text" name="crit3"></input>
-			<select name="max">
+	<span>Criteria 3</span> <input type="text" name="crit13"></input>
+	<label><span>Maximum </span></label><select name="max13">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>														<br> 
-	<span>Criteria 4</span> <input type="text" name="crit4"></input>
-				<select name="max">
+	<span>Criteria 4</span> <input type="text" name="crit14"></input>
+	<label><span>Maximum </span></label><select name="max14">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>													<br> 
-	<span>Criteria 5</span> <input type="text" name="crit5"></input>
-	<select name="max">
+	<span>Criteria 5</span> <input type="text" name="crit15"></input>
+	<label><span>Maximum </span></label><select name="max15">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
@@ -93,105 +125,74 @@ align: "right";
 	
 	<td>
 	
-	<span>Criteria 1</span> <input type="text" name="crit1"></input>
-<select name="max">
+	<span>Criteria 1</span> <input type="text" name="crit21"></input>
+<label><span>Maximum </span></label><select name="max21">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 2</span> <input type="text" name="crit2"></input>
-	<select name="max">
+	<span>Criteria 2</span> <input type="text" name="crit22"></input>
+	<label><span>Maximum </span></label><select name="max22">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 3</span> <input type="text" name="crit3"></input>
-			<select name="max">
+	<span>Criteria 3</span> <input type="text" name="crit23"></input>
+		<label><span>Maximum </span></label><select name="max23">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>														<br> 
-	<span>Criteria 4</span> <input type="text" name="crit4"></input>
-				<select name="max">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>													<br> 
-	<span>Criteria 5</span> <input type="text" name="crit5"></input>
-	<select name="max">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>	<br>
-	</td>
-</tr>
 
 </table>
 </div>
 
 <div id="section">
 <span>Section III<input type="text" name="sect3"></input></span>
+
 <table align="center">
 
-<tr id="sect1">
+<tr id="sect3">
 	
 	<td>
 	
-	<span>Criteria 1</span> <input type="text" name="crit1"></input>
-<select name="max">
+	<span>Criteria 1</span> <input type="text" name="crit31"></input>
+<label><span>Maximum </span></label><select name="max31">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 2</span> <input type="text" name="crit2"></input>
-	<select name="max">
+	<span>Criteria 2</span> <input type="text" name="crit32"></input>
+	<label><span>Maximum </span></label><select name="max32">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 3</span> <input type="text" name="crit3"></input>
-			<select name="max">
+	<span>Criteria 3</span> <input type="text" name="crit33"></input>
+			<label><span>Maximum </span></label><select name="max33">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>														<br> 
-	<span>Criteria 4</span> <input type="text" name="crit4"></input>
-				<select name="max">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>													<br> 
-	<span>Criteria 5</span> <input type="text" name="crit5"></input>
-	<select name="max">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>	<br>
-	</td>
-</tr>
 
 </table>
+<input type = "submit" value = "Create" />
+<input type = "button" value = "Cancel" />
+</form>
 </div>
+
 
 </body>
 </html>

@@ -4,9 +4,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>View Report</title>
 </head>
 <body>
+<h3 align="left">Quick Filter</h3>
+
+<select name="Select Report Template">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+
+<select name="Select Department">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+
+<select name="Select Report Title">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+
+<input type="button" value="View" onclick="View()"> 
+
+<input type="button" value="Cancel" onclick="Cancel()">
+
+
 
 </body>
 </html>
