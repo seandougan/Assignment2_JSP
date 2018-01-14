@@ -23,27 +23,36 @@ public class EnterDepartmentServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("EnterDepartmentsServlet() called");
+		
 		String action = request.getParameter("action");
-		if (action.equals("Submit")) {
-			String deptName = request.getParameter("deptName");
-			String floor = request.getParameter("floor");
-			int floorNum = Integer.parseInt(floor);
-			Boolean successCheck = DepartmentsDA.enterDepartment(deptName, floorNum);
-			System.out.println(successCheck);
-			if (successCheck) {
-				//Success page
-				request.setAttribute("successCheck", successCheck);
+		System.out.println("action = " + action);
+		if (action == null) {
+			response.setContentType("text/html");
+			request.setAttribute("action", "firstLoad");
+			request.getRequestDispatcher("EnterDepartment.jsp").forward(request, response);
 			}
-			else {
-				//Failure message
-				request.setAttribute("successCheck", successCheck);
+			System.out.println("action != null");
+			if (action.equals("Submit")) {
+				String deptName = request.getParameter("deptName");
+				String floor = request.getParameter("floor");
+				int floorNum = Integer.parseInt(floor);
+				Boolean successCheck = DepartmentsDA.enterDepartment(deptName, floorNum);
+				System.out.println(successCheck);
+				if (successCheck) {
+					//Success page
+					request.setAttribute("successCheck", successCheck);
+				}
+				else {
+					//Failure message
+					request.setAttribute("successCheck", successCheck);
+				}
+				request.getRequestDispatcher("EnterDepartment.jsp").forward(request, response);
 			}
-			request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
+			System.out.println("End of doGet()");
+
 		}
-		else {
-			request.getRequestDispatcher("/WEB-INF/Homepage.jsp").forward(request, response);
-		}
-	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

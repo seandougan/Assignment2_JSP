@@ -27,25 +27,25 @@
 </head>
 <body>
 
-<h1>View Departments</h1>
-
-<table align="center">
-	<tr>
-		<th>  Department Name  </th>
-		<th>  Department Location/Floor  </th>
-	</tr>
-		<c:forEach items="${departments}" var="department">
-			<tr>
-				<td><c:out value="${department.name}"/></td>
-				<td><c:out value="${department.floor}"/></td>
-			</tr>
-		</c:forEach>
-</table>
-<br>
-<br>
-
-<form action="ViewDepartmentsServlet"><input type="submit" value="Home"></form>
-
+	<h1>View Departments</h1>
+	<jsp:include page="/WEB-INF/Banner.jsp" />
+	<table align="center">
+		<tr>
+			<th>  Department Name  </th>
+			<th>  Department Location/Floor  </th>
+		</tr>
+			<c:forEach items="${departments}" var="department">
+				<tr>
+					<td><c:out value="${department.name}"/></td>
+					<td><c:out value="${department.floor}"/></td>
+				</tr>
+			</c:forEach>
+	</table>
+	<br>
+	<br>
+	
+	<form action="ViewDepartmentsServlet"><input type="submit" value="Home"></form>
+	
 
 </body>
 </html>
