@@ -10,7 +10,6 @@ package validation.beans;
 * It is sloppy but functional, thank you for the extra time learned a lot> 
  */
 
-import java.lang.Exception;
 
 public class EmployeeValidation {
 	

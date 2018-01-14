@@ -9,23 +9,13 @@
  */
 package utility;
 
-import java.io.IOException;
-import utility.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
 public class EmployeeDAO {
 	  
 		  public static void EmployeeEntry(String fName, String lName, String email, String pNumber, String yH, String role, int fk){		  
-	 
-			  
 			// Request Parameters
 			   
 				 System.out.println("Entering in Employees");
@@ -56,13 +46,16 @@ public class EmployeeDAO {
 					System.out.println("Database insert successful!");
 					con.close(); 
 					
-	} catch (Exception e) {
-		
-		e.printStackTrace();
-	}
-		
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				}
 		  }
+		  
 }
+
+
+
 	  
 	  // employee_FirstName, employee_LastName ,Employee_Role, Employee_Email, employee_PhoneNumber, Department_ID
 			  
