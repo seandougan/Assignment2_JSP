@@ -31,10 +31,9 @@ public class DepartmentsServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
 		}
 		else {
+			//Generate the list of departments then pass it to jsp
 			List<Department> departments = new ArrayList<>();
-			
 			departments = DepartmentsDA.getDepartments();
-			
 			request.setAttribute("departments", departments);
 			request.getRequestDispatcher("/WEB-INF/ViewDepartments.jsp").forward(request, response);
 		}

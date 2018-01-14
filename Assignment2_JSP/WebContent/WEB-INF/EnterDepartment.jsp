@@ -18,6 +18,7 @@
 <body>
 <h1>Department Entry</h1>
 
+
 	<% Boolean successCheck = (Boolean) request.getAttribute("successCheck");
 		if (successCheck != null) {
 			if (successCheck) {

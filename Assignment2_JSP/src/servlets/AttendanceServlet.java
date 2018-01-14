@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.AttendanceDA;
+import database.DepartmentsDA;
 import utility.Attendance;
+import utility.Department;
 
 @WebServlet("/AttendanceServlet")
 public class AttendanceServlet extends HttpServlet {
@@ -31,15 +33,22 @@ public class AttendanceServlet extends HttpServlet {
 		
 		if (buttonCheck.equals("View Attendance")) {
 			List<Attendance> attendances = new ArrayList<>();
-			
 			attendances = AttendanceDA.getAttendances();
 			request.setAttribute("attendances", attendances);
+			//Generate the list of departments then pass it to jsp
+			List<Department> departments = new ArrayList<>();
+			departments = DepartmentsDA.getDepartments();
+			request.setAttribute("departments", departments);
 			
 			System.out.println("Entering ViewAttendance.jsp");
 			request.getRequestDispatcher("/WEB-INF/ViewAttendance.jsp").forward(request, response);
 		}
 		else if (buttonCheck.equals("Enter Attendance")) {
 			System.out.println("Entering EnterAttendance.jsp");
+			//Generate the list of departments then pass it to jsp
+			List<Department> departments = new ArrayList<>();
+			departments = DepartmentsDA.getDepartments();
+			request.setAttribute("departments", departments);
 			request.getRequestDispatcher("/WEB-INF/EnterAttendance.jsp").forward(request, response);
 		}
 	}
