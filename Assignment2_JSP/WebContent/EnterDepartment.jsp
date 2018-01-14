@@ -4,25 +4,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Attendance</title>
+<title>Department Entry</title>
 <style>
 input {
 	margin: auto;
 	display: block;
 }
 
-h1, h2 {
+h1, p {
 	text-align: center;
 }
 </style>
 </head>
 <body>
-	<h1>Attendance Page</h1>
+	<jsp:include page="/WEB-INF/Banner.jsp" />
+	<h1>Department Entry</h1>
 
-	<h2>Choose a page to go to</h2>
-	<form action="AttendanceServlet">
-		<input type="submit" name="pageSelect" value="Enter Attendance">
-		<input type="submit" name="pageSelect" value="View Attendance">
+	<form action="EnterDepartmentServlet">
+		<p>
+			<b>Department Name</b>
+		</p>
+		<input type="text" name="deptName">
+		<p>
+			<b>Department Floor</b>
+		</p>
+		<input type="text" name="floor"> <input type="submit"
+			value="Submit" name="action"> <input type="submit"
+			value="Home" name="action">
 	</form>
 </body>
 </html>

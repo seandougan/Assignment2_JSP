@@ -26,18 +26,19 @@ public class DepartmentsServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String pageSelect = request.getParameter("pageSelect");
 		if (pageSelect.equals("Enter Department")) {
 			request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
 		}
 		else {
+			//Generate the list of departments then pass it to jsp
 			List<Department> departments = new ArrayList<>();
-			
 			departments = DepartmentsDA.getDepartments();
-			
 			request.setAttribute("departments", departments);
 			request.getRequestDispatcher("/WEB-INF/ViewDepartments.jsp").forward(request, response);
 		}
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
