@@ -4,10 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Homepage</title>
+<title>Groups</title>
+<style>
+	h1 {
+		text-align: center;
+	}
+
+</style>
 </head>
 <body>
-<h1>Homepage</h1>
-<form action="HomepageServlet"><input type="submit" value="ViewDepartments" name="nextPage"></form>
+	<h1>Groups</h1>
+	<h3>Group Entry</h3>
+	<form action="EnterGroupServlet">
+		<input type="submit" value="Group Entry">
+	</form>
+	<h3>View Groups</h3>
+	<form action="GroupViewServlet">
+		<input type="submit" value="View Groups">
+	</form>
 </body>
 </html>
