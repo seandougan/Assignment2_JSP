@@ -18,7 +18,7 @@ margin-bottom: 0.5em;
 border-bottom: 1px solid #aaa;
 padding: 0.5em 0 1em 0;
 border: "solid";
-align: "centre";
+
 
 }
 
@@ -44,7 +44,6 @@ align: "centre";
 
 </div>
 
-
 <div id="section">
 <span>Section I<input type="text" name="sect1"></input></span>
 <table align="center">
@@ -53,54 +52,92 @@ align: "centre";
 	
 	<td>
 	
-	<span>Criteria 1</span> <input type="text" name="crit1"></input>
-<select name="max">
+	<span>Criteria 1</span> <input type="text" name="crit11"></input>
+	<label><span>Maximum </span></label><select name="max11">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 2</span> <input type="text" name="crit2"></input>
-	<select name="max">
+	<span>Criteria 2</span> <input type="text" name="crit12"></input>
+	<label><span>Maximum </span></label><select name="max12">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>															<br> 
-	<span>Criteria 3</span> <input type="text" name="crit3"></input>
-			<select name="max">
+	<span>Criteria 3</span> <input type="text" name="crit13"></input>
+	<label><span>Maximum </span></label><select name="max13">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>														<br> 
-	<span>Criteria 4</span> <input type="text" name="crit4"></input>
-				<select name="max">
+	<span>Criteria 4</span> <input type="text" name="crit14"></input>
+	<label><span>Maximum </span></label><select name="max14">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
 </select>													<br> 
-	<span>Criteria 5</span> <input type="text" name="crit5"></input>
-	<select name="max">
+	<span>Criteria 5</span> <input type="text" name="crit15"></input>
+	<label><span>Maximum </span></label><select name="max15">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
-</select>	<br>
+</select>
 	</td>
 </tr>
 
 </table>
+<input type="text" id="text" name="com1" style="width: 100px; height: 100px; align:right" />
+</div>
 
-<input type="text" id="text" name="com1" style="width: 250px; height: 250px; align: right; display: inline-block;" />
+<div id="section">
+<span>Section II<input type="text" name="sect2"></input></span>
+<table align="center">
+
+<tr id="sect1">
+	
+	<td>
+	
+	<span>Criteria 1</span> <input type="text" name="crit21"></input>
+<label><span>Maximum </span></label><select name="max21">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>															<br> 
+	<span>Criteria 2</span> <input type="text" name="crit22"></input>
+	<label><span>Maximum </span></label><select name="max22">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>															<br> 
+	<span>Criteria 3</span> <input type="text" name="crit23"></input>
+		<label><span>Maximum </span></label><select name="max23">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>														
+
+</table>
 
 </div>
+
+
+
 
 <div id="section">
 <span>Section II<input type="text" name="sect2"></input></span>
@@ -151,9 +188,12 @@ align: "centre";
   <option value="5">5</option>
 </select>	<br>
 	</td>
+	
 </tr>
 
 </table>
+
+
 </div>
 
 <div id="section">

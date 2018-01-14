@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="utility.Database" %>
 <%@ page import="java.sql.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,8 +34,15 @@ align: "right";
 <body>
 	<div id="header"><h1>Create Report Template</h1></div>
 	
+	
+	
+	
 <form method="post">
 
+<label>Report Template:</label><input type="text" name="rTemplate"></input>
+ <label>Date:</label><input type="text" name="templ_Date"></input> <br>
+
+<label>Department:</label>
 <!-- Sean's Combobox-to-Database code -->
 <select name="departments" id="depomans">
 	<% Connection con = Database.startConnection();
@@ -50,6 +58,7 @@ rs = statement.executeQuery(query);
 <%
 while (rs.next()) {
 %>
+
 
 <option value = '<%=rs.getString("department_Name")%>' > <%=rs.getString("department_Name")%></option>
 

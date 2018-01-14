@@ -11,18 +11,12 @@
 
 <select name="Select Report Template">
   <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
+
 </select>
 
 <select name="Select Department">
   <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
+
 </select>
 
 <select name="Select Report Title">
@@ -37,7 +31,11 @@
 
 <input type="button" value="Cancel" onclick="Cancel()">
 
+<div id="viewReport">
 
+<p> View Report Here</p>
+
+</div>
 
 </body>
 </html>

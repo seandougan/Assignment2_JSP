@@ -85,6 +85,7 @@ CREATE TABLE REPORT_TEMPLATE
   Section1 VARCHAR (255) NOT NULL,
   Section2 VARCHAR(255),
   Section3 VARCHAR(255),
+
   Criteria11 VARCHAR(255) NOT NULL,
 Maximum11 int (5),
 Criteria12 VARCHAR(255),
@@ -111,6 +112,17 @@ Criteria32 VARCHAR(255),
   Maximum32 int (5),
 Criteria33 VARCHAR(255),
   Maximum33 int (5)
+);
+
+#Report Table
+
+CREATE TABLE REPORT
+(
+
+rep_ID INT (11) AUTO_INCREMENT PRIMARY KEY
+
+
+
 );
 
 #This Section will add necessary records for testing to the DB
