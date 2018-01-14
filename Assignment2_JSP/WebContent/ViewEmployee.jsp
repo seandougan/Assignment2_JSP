@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import="utility.SessionAuthentication" %>
-<%@ page import="utility.Database" %>
-<%@ page import="java.sql.*" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="utility.SessionAuthentication"%>
+<%@ page import="utility.Database"%>
+<%@ page import="java.sql.*"%>
 <% 
 //GRAB SESSION
 HttpSession ss = request.getSession();
@@ -18,44 +18,48 @@ if(SessionAuthentication.authenticateSession(ss)){
 
 <style>
 span {
-    border-top: 1px solid #333;
-    width: 100%;
-    height: 1px;
-    display: block;
+	border-top: 1px solid #333;
+	width: 100%;
+	height: 1px;
+	display: block;
 }
 
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+	background-color: #dddddd;
 }
 </style>
 
 <!-- BOOTSTRAP 337 CSS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Employees</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/Banner.jsp" />
+	<jsp:include page="/WEB-INF/Banner.jsp" />
 
-<h1 class="text-center">View Employee Resources</h1>
-<h4 class="text-center">Search by Department</h4>
+	<h1 class="text-center">View Employee Resources</h1>
+	<h4 class="text-center">Search by Department</h4>
 
-<form method="post" action="ViewEmployee.jsp" class="text-center">
-<select name="departments" id="depomans">
+	<form method="post" action="ViewEmployee.jsp" class="text-center">
+		<select name="departments" id="depomans">
 
-<% Connection con = Database.startConnection();
+			<% Connection con = Database.startConnection();
 
 ResultSet rs = null;
 Statement statement = null;
@@ -67,34 +71,33 @@ statement = con.createStatement();
 rs = statement.executeQuery(query);	
 %>
 
-<%
+			<%
 while (rs.next()) {
 %>
 
-<option value = '<%=rs.getString("department_Name")%>'><%=rs.getString("department_Name")%></option>
+			<option value='<%=rs.getString("department_Name")%>'><%=rs.getString("department_Name")%></option>
 
 
-<% }
+			<% }
 
 con.close();
 statement.close();
 rs.close();
 %>
-</select>
-		<input type="submit" name="subView" value="Search">	
-		</form>	
-</select>
-<span></span>
-<table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Role</th>
-    <th>Email</th>
-    <th>Phone Number</th>
-    <th>Year Hired</th>
-  </tr>
-<%
+		</select> <input type="submit" name="subView" value="Search">
+	</form>
+	</select>
+	<span></span>
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Role</th>
+			<th>Email</th>
+			<th>Phone Number</th>
+			<th>Year Hired</th>
+		</tr>
+		<%
 
 	Connection con2 = Database.startConnection();
 
@@ -107,25 +110,25 @@ rs.close();
 	rs2 = st2.executeQuery(query2);	// NEED TO USE int NUMBER NOT NAME READD SUBU
 while (rs2.next()) {
 %>
-<p>
-<% rs2.getString("employee_FirstName"); %>
-</p>
-<tr>
-	<td><%= rs2.getString("employee_FirstName") %></td>
-	<td><%= rs2.getString("employee_LastName") %></td>
-	<td><%= rs2.getString("employee_Role") %></td>
-	<td><%= rs2.getString("employee_Email") %></td>
-	<td><%= rs2.getString("employee_PhoneNumber") %></td>
-	<td><%= rs2.getString("employee_YearHired") %></td>
-</tr>
+		<p>
+			<% rs2.getString("employee_FirstName"); %>
+		</p>
+		<tr>
+			<td><%= rs2.getString("employee_FirstName") %></td>
+			<td><%= rs2.getString("employee_LastName") %></td>
+			<td><%= rs2.getString("employee_Role") %></td>
+			<td><%= rs2.getString("employee_Email") %></td>
+			<td><%= rs2.getString("employee_PhoneNumber") %></td>
+			<td><%= rs2.getString("employee_YearHired") %></td>
+		</tr>
 
-<% } 
+		<% } 
 
 %>
 
-</table>
+	</table>
 
-<%
+	<%
 
 %>
 </body>
