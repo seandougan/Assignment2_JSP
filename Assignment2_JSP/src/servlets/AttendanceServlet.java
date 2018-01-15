@@ -28,25 +28,7 @@ public class AttendanceServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String buttonCheck = request.getParameter("pageSelect");
-		System.out.println("buttonCheck = " + buttonCheck);
 		
-		if (buttonCheck.equals("View Attendance")) {
-
-			//Generate the list of departments then pass it to jsp
-			List<Department> departments = new ArrayList<>();
-			departments = DepartmentsDA.getDepartments();
-			request.setAttribute("departments", departments);
-			
-			//Select the first row in the department table to populate the table originally
-			String departmentSelect = DepartmentsDA.getFirstDepartment();
-			List<Attendance> attendances = new ArrayList<>();
-			attendances = AttendanceDA.getDptAttendance(departmentSelect);
-			request.setAttribute("attendances", attendances);
-			System.out.println("Entering ViewAttendance.jsp");
-			request.getRequestDispatcher("/WEB-INF/ViewAttendance.jsp").forward(request, response);
-		}
-		else if (buttonCheck.equals("Enter Attendance")) {
 			System.out.println("Entering EnterAttendance.jsp");
 			//Generate the list of departments then pass it to jsp
 			List<Department> departments = new ArrayList<>();
@@ -54,7 +36,7 @@ public class AttendanceServlet extends HttpServlet {
 
 			request.setAttribute("departments", departments);
 			request.getRequestDispatcher("/WEB-INF/EnterAttendance.jsp").forward(request, response);
-		}
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
