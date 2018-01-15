@@ -2,6 +2,7 @@ package utility;
 
 public class Employee {
 	
+	String employeeName;
 	private int employeeNumber;
 	private String firstName;
 	private String lastName;
@@ -53,5 +54,12 @@ public class Employee {
 		this.department = department;
 	}
 	
+	public void setName(String name){
+		this.employeeName = name;
+	}
+	
+	public String getName(){
+		return employeeName;
+	}
 	
 }

@@ -62,6 +62,36 @@
   </div>
 	</div>  
   </li>
+  <!-- Attendance -->
+     <li>    
+      <div class="btn-group">
+  <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Groups
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Enter Attendance</a>
+    <div class="dropdown-divider">
+      <a class="dropdown-item" href="#">View Attendance</a>
+      </div>
+  </div>
+  </div>
+	</div>  
+  </li>
+  <!-- MICHAELS PART -->
+     <li>    
+      <div class="btn-group">
+  <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Groups
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Enter Report</a>
+    <div class="dropdown-divider">
+      <a class="dropdown-item" href="#">View Report</a>
+      </div>
+  </div>
+  </div>
+	</div>  
+  </li>
   <li class="pull-right">
   Logged in as <%= ckF.findCookie(cookies) %> | <a href="DestroySession">Logout</a>
   </li>
