@@ -26,9 +26,9 @@
 	</style>
 </head>
 <body>
-
+<jsp:include page="/WEB-INF/Banner.jsp" />
 	<h1>View Departments</h1>
-	<jsp:include page="/WEB-INF/Banner.jsp" />
+	
 	<table align="center">
 		<tr>
 			<th>  Department Name  </th>

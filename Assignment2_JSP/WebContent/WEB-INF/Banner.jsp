@@ -21,9 +21,10 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="Homepage.jsp">Home</a></li>
+      <!-- DEPARTMENT -->
       <li>    
       <div class="btn-group">
-  <button type="button" class="btn btn-lg btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button type="button" class="btn  btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Departments
   </button>
   <div class="dropdown-menu">
@@ -31,13 +32,14 @@
      <div class="dropdown-divider">
     <a class="dropdown-item" href="ViewDepartments.jsp">View Department</a>
     </div>
-
   </div>
 	</div>  
   </li>
-    <li>    
+  
+        <!-- EMPLOYEE -->
+      <li>    
       <div class="btn-group">
-  <button type="button" class="btn btn-lg btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button type="button" class="btn  btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Employees
   </button>
   <div class="dropdown-menu">
@@ -48,57 +50,58 @@
   </div>
 	</div>  
   </li>
-   <li>    
+  
+        <!-- GROUPS -->
+      <li>    
       <div class="btn-group">
-  <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button type="button" class="btn  btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Groups
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Enter Group</a>
-    <div class="dropdown-divider">
-      <a class="dropdown-item" href="#">View Group</a>
-      </div>
-  </div>
+    <a class="dropdown-item" href="EnterDepartments.jsp">Enter Group</a>
+     <div class="dropdown-divider">
+    <a class="dropdown-item" href="ViewDepartments.jsp">View Group</a>
+    </div>
   </div>
 	</div>  
   </li>
-  <!-- Attendance -->
-     <li>    
+  
+        <!-- REPORTS -->
+      <li>    
       <div class="btn-group">
-  <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Groups
+  <button type="button" class="btn  btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Reports
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Enter Attendance</a>
-    <div class="dropdown-divider">
-      <a class="dropdown-item" href="#">View Attendance</a>
-      </div>
-  </div>
+    <a class="dropdown-item" href="EnterDepartments.jsp">Enter Report</a>
+     <div class="dropdown-divider">
+    <a class="dropdown-item" href="ViewDepartments.jsp">View Report</a>
+    </div>
   </div>
 	</div>  
   </li>
-  <!-- MICHAELS PART -->
-     <li>    
+  
+        <!-- ATTENDANCE -->
+      <li>    
       <div class="btn-group">
-  <button type="button" class="btn btn-lg btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Groups
+  <button type="button" class="btn  btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Attendance
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Enter Report</a>
-    <div class="dropdown-divider">
-      <a class="dropdown-item" href="#">View Report</a>
-      </div>
-  </div>
+    <a class="dropdown-item" href="EnterAttendance.jsp">Enter Attendance</a>
+     <div class="dropdown-divider">
+    <a class="dropdown-item" href="ViewAttendance.jsp">View Attendance</a>
+    </div>
   </div>
 	</div>  
   </li>
-  <li class="pull-right">
+
+<li class="pull-right">
   Logged in as <%= ckF.findCookie(cookies) %> | <a href="DestroySession">Logout</a>
   </li>
-    </ul>
-  </div>
+  
+</ul>
 </nav>
-
 <!-- JQUERY 3.1 MIN BEFORE BOOTSTAP MIN.JS -->
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
