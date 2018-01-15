@@ -26,6 +26,7 @@ public class DepartmentsServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String pageSelect = request.getParameter("pageSelect");
 		if (pageSelect.equals("Enter Department")) {
 			request.getRequestDispatcher("/WEB-INF/EnterDepartment.jsp").forward(request, response);
@@ -37,6 +38,7 @@ public class DepartmentsServlet extends HttpServlet {
 			request.setAttribute("departments", departments);
 			request.getRequestDispatcher("/WEB-INF/ViewDepartments.jsp").forward(request, response);
 		}
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

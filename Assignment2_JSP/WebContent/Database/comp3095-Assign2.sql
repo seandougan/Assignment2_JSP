@@ -35,7 +35,7 @@ CREATE TABLE EMPLOYEE
     employee_FirstName VARCHAR(255),
     employee_LastName VARCHAR(255),
     employee_Role VARCHAR(20),
-    employee_Email VARCHAR(20),
+    employee_Email VARCHAR(255),
     employee_PhoneNumber VARCHAR(20),
     employee_YearHired VARCHAR (4),
 	FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
@@ -45,11 +45,18 @@ CREATE TABLE EMPLOYEE
 CREATE TABLE GROUPS
 (
 	group_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
-	department_ID_FK INT (11) NOT NULL ,
+    department_ID_FK INT (11) ,
     group_Name VARCHAR(255) UNIQUE,
     group_Manager VARCHAR(255),
-    group_Role VARCHAR(55),
+	group_Role VARCHAR(55),
     group_Description VARCHAR(255),
+    group_Employee1 VARCHAR(40),
+    group_Employee2 VARCHAR(40),
+    group_Employee3 VARCHAR(40),
+    group_Employee4 VARCHAR(40),
+    group_Employee5 VARCHAR(40),
+	group_Employee6 VARCHAR(40),
+    group_Department VARCHAR(255) ,
     FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
 );
 
@@ -65,8 +72,7 @@ CREATE TABLE EMPLOYEE_GROUPS
 
 CREATE TABLE ATTENDANCE
 (
-	attendance_ID INT (11) AUTO_INCREMENT PRIMARY KEY,
-    employee_ID_FK INT (11) NOT NULL,
+    employee_ID_FK INT (11) NOT NULL PRIMARY KEY,
     present1 BIT, #0 represents not present, 1 represents present
     present2 BIT,
     present3 BIT,
@@ -107,3 +113,20 @@ INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
 ('Database Development', 4);
 INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
 ('Human Resources', 6);
+
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139568, 'John', 'Doe', 'Team Lead', 'john.doe@gmaill.com', 4165524125, 2017);
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139587, 'David', 'Tatum', 'Web Dev', 'dtatum@hotmail.com', 6478596352, 2015);
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139741, 'Avery', 'Mollis', 'Database Technician', 'ave-mollis87@gmail.com', 6473529658, 2014);
+
+INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
+(20139568, 1, 1, 1);
+INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
+(20139587, 1, 1, 0);
+INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
+(20139741, 0, 1, 1);
+
+INSERT INTO Groups(group_Name, group_Department, group_Employee1, group_Employee2, group_Employee3, group_Employee4, group_Employee5, group_Employee6) VALUES('The Seinfields', 'Accounting', 'jeff hobs', 'chester tester', 'e t', 'rob robertson', 'jane janeson', 'who whosom');
+INSERT INTO Groups(group_Name, group_Department, group_Employee1, group_Employee2, group_Employee3, group_Employee4, group_Employee5, group_Employee6) VALUES('The Cats', 'Finance', 'jeff bridges', 'the rock', 'E T', 'jason smith', 'jane doe', 'first last');

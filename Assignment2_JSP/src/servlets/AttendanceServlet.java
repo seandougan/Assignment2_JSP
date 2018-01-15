@@ -32,14 +32,17 @@ public class AttendanceServlet extends HttpServlet {
 		System.out.println("buttonCheck = " + buttonCheck);
 		
 		if (buttonCheck.equals("View Attendance")) {
-			List<Attendance> attendances = new ArrayList<>();
-			attendances = AttendanceDA.getAttendances();
-			request.setAttribute("attendances", attendances);
+
 			//Generate the list of departments then pass it to jsp
 			List<Department> departments = new ArrayList<>();
 			departments = DepartmentsDA.getDepartments();
 			request.setAttribute("departments", departments);
 			
+			//Select the first row in the department table to populate the table originally
+			String departmentSelect = DepartmentsDA.getFirstDepartment();
+			List<Attendance> attendances = new ArrayList<>();
+			attendances = AttendanceDA.getDptAttendance(departmentSelect);
+			request.setAttribute("attendances", attendances);
 			System.out.println("Entering ViewAttendance.jsp");
 			request.getRequestDispatcher("/WEB-INF/ViewAttendance.jsp").forward(request, response);
 		}
@@ -48,6 +51,7 @@ public class AttendanceServlet extends HttpServlet {
 			//Generate the list of departments then pass it to jsp
 			List<Department> departments = new ArrayList<>();
 			departments = DepartmentsDA.getDepartments();
+
 			request.setAttribute("departments", departments);
 			request.getRequestDispatcher("/WEB-INF/EnterAttendance.jsp").forward(request, response);
 		}

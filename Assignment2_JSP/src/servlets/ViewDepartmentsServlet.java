@@ -23,8 +23,8 @@ public class ViewDepartmentsServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.getRequestDispatcher("/WEB-INF/Homepage.jsp").forward(request, response);
+		System.out.println("EnterDepartmentsServlet() called");
+		System.out.println("End of doGet()");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

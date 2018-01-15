@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import utility.LoginDAO;
-import utility.SessionAuthentication;
 import validation.beans.LoginValidator;
 
 

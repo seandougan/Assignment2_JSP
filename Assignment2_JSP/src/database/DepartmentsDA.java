@@ -1,4 +1,5 @@
 /*
+ /*
  * Date: January 4th, 2018,
  * Group Members: Sean Dougan - 101029633, Matthew McCarthy - 101009842, Michael Van Dyke - 101008864
  * Gregory Uchitel - 100322200, James Massle - 101025072
@@ -69,8 +70,26 @@ public class DepartmentsDA {
 		}
 		successCheck = true;
 		return successCheck;
+	}
 	
+	public static String getFirstDepartment() {
+		String department = null;
+		try {
+		ResultSet results;
+		System.out.println("Creating connection...");
+		Connection con = Database.startConnection();
+		String query = "SELECT * from DEPARTMENT";
+		System.out.println("Creating statement...");
+		Statement statement = con.createStatement();
+		System.out.println("Running query - " + query);
+		results = statement.executeQuery(query);
+		department = results.getString("department_Name");
+		} catch (Exception e) {
+			System.out.println("Error!");
+			System.out.println(e);
+			return null;
+		}
+		return department;
 	}
 }
 	
-
