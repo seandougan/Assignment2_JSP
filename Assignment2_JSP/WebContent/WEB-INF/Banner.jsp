@@ -96,11 +96,12 @@
 	</div>  
   </li>
 
-<li class="pull-right">
-  Logged in as <%= ckF.findCookie(cookies) %> | <a href="DestroySession">Logout</a>
-  </li>
+
   
 </ul>
+<span class="pull-right">
+  Logged in as <%= ckF.findCookie(cookies) %> | <a href="DestroySession">Logout</a>
+  </span>
 </nav>
 <!-- JQUERY 3.1 MIN BEFORE BOOTSTAP MIN.JS -->
 <script
