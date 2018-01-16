@@ -26,7 +26,7 @@ CREATE TABLE DEPARTMENT
     department_Name VARCHAR(255) UNIQUE,
     department_Floor INT(5)
 );
-
+EK
 #EMPLOYEE
 CREATE TABLE EMPLOYEE
 (
@@ -35,7 +35,7 @@ CREATE TABLE EMPLOYEE
     employee_FirstName VARCHAR(255),
     employee_LastName VARCHAR(255),
     employee_Role VARCHAR(20),
-    employee_Email VARCHAR(20),
+    employee_Email VARCHAR(255),
     employee_PhoneNumber VARCHAR(20),
     employee_YearHired VARCHAR (4),
 	FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
@@ -65,15 +65,12 @@ CREATE TABLE EMPLOYEE_GROUPS
 
 CREATE TABLE ATTENDANCE
 (
-	attendance_ID INT (11) AUTO_INCREMENT PRIMARY KEY,
-    employee_ID_FK INT (11) NOT NULL,
+    employee_ID_FK INT (11) NOT NULL PRIMARY KEY,
     present1 BIT, #0 represents not present, 1 represents present
     present2 BIT,
     present3 BIT,
     FOREIGN KEY (employee_ID_FK) REFERENCES EMPLOYEE(employeE_ID) ON DELETE CASCADE
 );
-
-#Reports Template Table
 
 CREATE TABLE REPORT_TEMPLATE
 (
@@ -119,8 +116,8 @@ Criteria33 VARCHAR(255),
 CREATE TABLE REPORT
 (
 
-rep_ID INT (11) AUTO_INCREMENT PRIMARY KEY
-templ_ID_FK INT (11) NOT NULL, 
+rep_ID INT (11) AUTO_INCREMENT PRIMARY KEY,
+templ_ID_FK INT (11) NOT NULL,
 
 rep_Name VARCHAR (255),
 rep_Date VARCHAR (255),
@@ -146,8 +143,59 @@ Eva31 int (5),
 Eva32 int (5),
 Eva33 int (5),
 
-FOREIGN KEY (templ_ID_FK) REFERENCES REPORT_TEMPLATE() ON DELETE CASCADE
+FOREIGN KEY (templ_ID_FK) REFERENCES REPORT_TEMPLATE(template_ID) ON DELETE CASCADE
 );
+
+
+#This Section will add necessary records for testing to the DB
+#ADDS USERS
+#Adding admin to users
+INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
+(NULL, NULL, 'admin@domain.ca', 'administrator', 'admin', 'admin');
+#add sergio to users
+INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
+('Sergio', 'Santilli', 'sergio.santilli@georgebrown.ca', 'instructor', 'sergio', 'santilli');
+#add sean dougan to users
+INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
+('Sean', 'Dougan', 'sean.dougan@georgebrown.ca', 'student', 'sean', 'dougan');
+#add greg uchitel to users
+INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
+('Gregory', 'Uchitel', 'gregory.uchitel@georgebrown.ca', 'student', 'gregory', 'uchitel');
+#add james massel to users
+INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
+('James', 'massel', 'james.massel@georgebrown.ca', 'student', 'james', 'massel');
+#add matthew mccarthy to users
+INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
+('Matthew', 'McCarthy', 'matthew.mccarthy@georgebrown.ca', 'student', 'matthew', 'mccarthy');
+#add michael van dyke to users
+INSERT INTO USERS(firstname, lastname, email, role, username, password) VALUES
+('Michael', 'Van Dyke', 'michael.vandyke@georgebrown.ca', 'student', 'michael', 'vandyke');
+
+#Add dummy floors
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Lobby', 1);
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Web Development', 2);
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Database Development', 4);
+INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
+('Human Resources', 6);
+
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139568, 'John', 'Doe', 'Team Lead', 'john.doe@gmaill.com', 4165524125, 2017);
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139587, 'David', 'Tatum', 'Web Dev', 'dtatum@hotmail.com', 6478596352, 2015);
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139741, 'Avery', 'Mollis', 'Database Technician', 'ave-mollis87@gmail.com', 6473529658, 2014);
+
+INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
+(20139568, 1, 1, 1);
+INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
+(20139587, 1, 1, 0);
+INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
+(20139741, 0, 1, 1);
+#Reports Template Table
+
 
 #This Section will add necessary records for testing to the DB
 #ADDS USERS
@@ -186,7 +234,7 @@ INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
 #Add text ReportTemplates
 
 INSERT INTO REPORT_TEMPLATE (department_name, template_name, template_date, Section1, Section2, Section3,Criteria11,Maximum11,Criteria12,Maximum12,Criteria13,Maximum13,Criteria14,Maximum14,Criteria15,Maximum15,Criteria21,Maximum21,Criteria22,Maximum22,Criteria23,Maximum23,Criteria31,Maximum31,Criteria32,Maximum32,Criteria33,Maximum33) VALUES
-('Database Development', 'Flare Team Review', '11/07/2016','Contribution','Responsibility','Value','Research and Gathering',5,'Sharing Information',5,'Using Time Wisely',5,'Ready to Work',5,NULL,NULL,'FulFill Teams Role',5,'Sharing Work Equally',5,'Helping Team Members',5,'Listen to Others',5,'Include Teammates',5,'Make Fair Decisions',5);
+('Database Development', 'Flare Template', '11/07/2016','Contribution','Responsibility','Value','Research and Gathering',5,'Sharing Information',5,'Using Time Wisely',5,'Ready to Work',5,NULL,NULL,'FulFill Teams Role',5,'Sharing Work Equally',5,'Helping Team Members',5,'Listen to Others',5,'Include Teammates',5,'Make Fair Decisions',5);
 
-INSERT INTO REPORT(rep_Name,rep_Date,comment1,comment2,comment3,rep_type,rep_target,eva11,eva12,eva13,eva14,eva15,eva21,eva22,eva23,eva31,eva32,eva33) VALUES
-('','11/07/1996','Contributed very well to the Team, good job!','Very responsible team member that took charge.','Very valuable to the team','');
+INSERT INTO REPORT(rep_Name,rep_Date,comment1,comment2,comment3,rep_type,rep_target,eva11,eva12,eva13,eva14,eva15,eva21,eva22,eva23,eva31,eva32,eva33,templ_ID_FK) VALUES
+('John Doe','11/07/1996','Contributed very well to the Team, good job!','Very responsible team member that took charge.','Very valuable to the team','Employee','20139568',3,3,2,4,null,3,3,2,3,3,4,1);

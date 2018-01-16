@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="utility.Database" %>
 <%@ page import="java.sql.*" %>
+ <%@ page import="java.util.*" %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -30,6 +32,13 @@ align: "right";
 }
 
 </style>
+
+<script type="text/javascript">
+function date(){
+
+  document.getElementById('date').value = Date();
+}
+</script>
 </head>
 <body>
 	<div id="header"><h1>Create Report Template</h1></div>
@@ -40,7 +49,12 @@ align: "right";
 <form method="post">
 
 <label>Report Template:</label><input type="text" name="rTemplate"></input>
- <label>Date:</label><input type="text" name="templ_Date"></input> <br>
+
+ <%java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy"); %>
+
+ <label>Date:</label><input type="text" name="templ_Date" id="date" value="<%= df.format(new java.util.Date()) %>" readonly></input> <br>
+
+
 
 <label>Department:</label>
 <!-- Sean's Combobox-to-Database code -->
@@ -199,9 +213,9 @@ rs.close();
 </table>
 <input type = "submit" value = "Create" />
 <input type = "button" value = "Cancel" />
-</form>
-</div>
 
+</div>
+</form>
 
 </body>
 </html>

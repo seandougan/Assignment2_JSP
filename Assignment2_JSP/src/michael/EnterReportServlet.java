@@ -18,7 +18,8 @@ import database.ReportTemplDA;
 @WebServlet("/EnterReportServlet")
 public class EnterReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+	int primaryKey;
+	
     public EnterReportServlet() {
         super();
       
@@ -37,12 +38,27 @@ public class EnterReportServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<ReportTemplBean> ReportTemplBean = new ArrayList<ReportTemplBean>();
-		ReportTemplBean = ReportTemplDA.getReportTempl();
-		request.setAttribute("ReportTempl", ReportTemplBean);
+	
 		
 		HttpSession ss = request.getSession();
 		
+		String button = request.getParameter("button");
+
+		String target = "";
+		
+		
+		if (button.equals("View")) {
+		  primaryKey = Integer.parseInt(request.getParameter("reportTemps"));
+			List<ReportTemplBean> ReportTemplBean = new ArrayList<ReportTemplBean>();
+			ReportTemplBean = ReportTemplDA.getReportTempl(primaryKey);
+			System.out.println( );
+			request.setAttribute("ReportTempl", ReportTemplBean);
+		}
+		
+		
+		if (button.equals("Enter")) {
+			int templ_ID_FK =  primaryKey;
+
 		String name = request.getParameter("rep_Name");
 		String date = request.getParameter("rep_Date");
 	
@@ -51,40 +67,53 @@ public class EnterReportServlet extends HttpServlet {
 		 String comment3 = request.getParameter("comment3");
 		 
 		 String type = request.getParameter("type");
-		 String target = request.getParameter("target");
+		 
 		
+		 //condition ? inCaseOfTrue : elseCase;
+		 
 		
+		int eva11 = (request.getParameter("eva11") != null) ? Integer.parseInt(request.getParameter("eva11").toString()) : 0;
+		 
+		int eva12 = (request.getParameter("eva12") != null) ? Integer.parseInt(request.getParameter("eva12").toString()) : 0;
+		 
+		int eva13 = (request.getParameter("eva13") != null) ? Integer.parseInt(request.getParameter("eva13").toString()) : 0;
+		 
+		int eva14 = (request.getParameter("eva14") != null) ? Integer.parseInt(request.getParameter("eva14").toString()) : 0;
+		 
+		int eva15 = (request.getParameter("eva15") != null) ? Integer.parseInt(request.getParameter("eva15").toString()) : 0;
+		 
 		
-		 int eva11 = Integer.parseInt(request.getParameter("eva11").toString());
-		 
-		 int eva12= Integer.parseInt(request.getParameter("eva12").toString());
-		 
-		 int eva13 = Integer.parseInt(request.getParameter("eva13").toString());
-		 
-		 int eva14 = Integer.parseInt(request.getParameter("eva14").toString());
-		 
-		 int eva15 = Integer.parseInt(request.getParameter("eva15").toString());
-		
-		 
-		 
-		 int eva21 = Integer.parseInt(request.getParameter("eva21").toString());
-		 
-		 int eva22 = Integer.parseInt(request.getParameter("eva22").toString());
-		 
-		 int eva23 = Integer.parseInt(request.getParameter("eva23").toString());
-		
-		 
-		 
-		 int eva31 = Integer.parseInt(request.getParameter("eva31").toString());
-		 
-		 int eva32 = Integer.parseInt(request.getParameter("eva32").toString());
-		 
-		 int eva33 = Integer.parseInt(request.getParameter("eva33").toString());
-		
-		 
+		if (type.equals("employee")){
+			 target = request.getParameter("employees");
 			
-			ReportDA.ReportEntry(name, date, comment1, comment2, comment3, type, target, eva11, eva12, eva13, eva14, eva15, eva21, eva22, eva23, eva31, eva32, eva33);
+		}else if(type.equals("group")) {
 			
+			 target = request.getParameter("groups");
+		}
+
+		 
+		int eva21 = (request.getParameter("eva21") != null) ? Integer.parseInt(request.getParameter("eva21").toString()) : 0;
+		 
+		int eva22 = (request.getParameter("eva22") != null) ? Integer.parseInt(request.getParameter("eva22").toString()) : 0;
+		
+		int eva23 = (request.getParameter("eva23") != null) ? Integer.parseInt(request.getParameter("eva23").toString()) : 0;
+		  
+		 
+		 
+		int eva31 = (request.getParameter("eva31") != null) ? Integer.parseInt(request.getParameter("eva31").toString()) : 0;
+		 
+		int eva32 = (request.getParameter("eva32") != null) ? Integer.parseInt(request.getParameter("eva32").toString()) : 0;
+		 
+		int eva33 = (request.getParameter("eva33") != null) ? Integer.parseInt(request.getParameter("eva33").toString()) : 0;
+
+		
+			
+	
+			ReportDA.ReportEntry(name, date, comment1, comment2, comment3, type, target, eva11, eva12, eva13, eva14, eva15, eva21, eva22, eva23, eva31, eva32, eva33,templ_ID_FK);
+			System.out.println("Data inserted");
+
+		}
+		
 		doGet(request, response);
 	}
 

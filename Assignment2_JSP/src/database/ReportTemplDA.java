@@ -18,7 +18,7 @@ public class ReportTemplDA {
 	
 	///Multi Table Query
 	
-	public static List<ReportTemplBean> getReportTempl () {
+	public static List<ReportTemplBean> getReportTempl (int PK) {
 		//Returns all rows in the Report template table as a list of objects
 		List<ReportTemplBean> reportTemplArr = new ArrayList<ReportTemplBean>();
 		
@@ -26,7 +26,7 @@ public class ReportTemplDA {
 			ResultSet results;
 			System.out.println("Creating connection...");
 			Connection con = Database.startConnection();
-			String query = "SELECT * from REPORT_TEMPLATE";
+			String query = "SELECT * from REPORT_TEMPLATE WHERE template_ID ="+PK;
 			System.out.println("Creating statement...");
 			Statement statement = con.createStatement();
 			System.out.println("Running query...");
@@ -36,38 +36,39 @@ public class ReportTemplDA {
 			while (results.next()) {
 				System.out.println(" - Creating Template - ");
 				ReportTemplBean reportTempl = new ReportTemplBean ();
-				reportTempl.setName(results.getString("reportTempl_Name"));
+				reportTempl.setName(results.getString("template_name"));
 				reportTempl.setDepartment(results.getString("department_name"));
-				reportTempl.setDate(results.getString("templ_Date"));
+				reportTempl.setDate(results.getString("template_Date"));
 				reportTempl.setSection1(results.getString("Section1"));
 				reportTempl.setSection2(results.getString("Section2"));
 				reportTempl.setSection3(results.getString("Section3"));
 				
 				
-				reportTempl.setCrit11(results.getString("crit11"));
-				reportTempl.setMax11(results.getInt("max11"));
-				reportTempl.setCrit12(results.getString("crit12"));
-				reportTempl.setMax12(results.getInt("max12"));
-				reportTempl.setCrit13(results.getString("crit13"));
-				reportTempl.setMax13(results.getInt("max13"));
-				reportTempl.setCrit14(results.getString("crit14"));
-				reportTempl.setMax14(results.getInt("max14"));
-				reportTempl.setCrit15(results.getString("crit15"));
-				reportTempl.setMax15(results.getInt("max15"));
 				
-				reportTempl.setCrit21(results.getString("crit21"));
-				reportTempl.setMax21(results.getInt("max21"));
-				reportTempl.setCrit22(results.getString("crit22"));
-				reportTempl.setMax22(results.getInt("max22"));
-				reportTempl.setCrit23(results.getString("crit23"));
-				reportTempl.setMax23(results.getInt("max23"));
+				reportTempl.setCrit11(results.getString("Criteria11"));
+				reportTempl.setMax11(results.getInt("Maximum11"));
+				reportTempl.setCrit12(results.getString("Criteria12"));
+				reportTempl.setMax12(results.getInt("Maximum12"));
+				reportTempl.setCrit13(results.getString("Criteria13"));
+				reportTempl.setMax13(results.getInt("Maximum13"));
+				reportTempl.setCrit14(results.getString("Criteria14"));
+				reportTempl.setMax14(results.getInt("Maximum14"));
+				reportTempl.setCrit15(results.getString("Criteria15"));
+				reportTempl.setMax15(results.getInt("Maximum15"));
 				
-				reportTempl.setCrit31(results.getString("crit31"));
-				reportTempl.setMax31(results.getInt("max31"));
-				reportTempl.setCrit32(results.getString("crit32"));
-				reportTempl.setMax32(results.getInt("max32"));
-				reportTempl.setCrit33(results.getString("crit33"));
-				reportTempl.setMax33(results.getInt("max33"));
+				reportTempl.setCrit21(results.getString("Criteria21"));
+				reportTempl.setMax21(results.getInt("Maximum21"));
+				reportTempl.setCrit22(results.getString("Criteria22"));
+				reportTempl.setMax22(results.getInt("Maximum22"));
+				reportTempl.setCrit23(results.getString("Criteria23"));
+				reportTempl.setMax23(results.getInt("Maximum23"));
+				
+				reportTempl.setCrit31(results.getString("Criteria31"));
+				reportTempl.setMax31(results.getInt("Maximum31"));
+				reportTempl.setCrit32(results.getString("Criteria32"));
+				reportTempl.setMax32(results.getInt("Maximum32"));
+				reportTempl.setCrit33(results.getString("Criteria33"));
+				reportTempl.setMax33(results.getInt("Maximum33"));
 				
 				System.out.println("Name: + " + reportTempl.getName());
 				//System.out.println(department.getFloor());
@@ -149,6 +150,11 @@ public class ReportTemplDA {
 	}
 		
 		  }
+
+	
+
+	
+	
 
 	
 

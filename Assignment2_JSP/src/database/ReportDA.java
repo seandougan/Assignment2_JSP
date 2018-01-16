@@ -2,13 +2,19 @@ package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import michael.ReportBean;
+import michael.ReportTemplBean;
 import utility.Database;
 
 public class ReportDA {
 	
 	
-	public static void ReportEntry(String name, String date, String comment1, String comment2, String comment3, String type, String target, int eva11, int eva12, int eva13, int eva14, int eva15, int eva21, int eva22, int eva23, int eva31, int eva32, int eva33) {
+	public static void ReportEntry(String name, String date, String comment1, String comment2, String comment3, String type, String target, int eva11, int eva12, int eva13, int eva14, int eva15, int eva21, int eva22, int eva23, int eva31, int eva32, int eva33, int templ_ID_FK) {
 		
 		
 		// Request Parameters
@@ -20,8 +26,8 @@ public class ReportDA {
 		  Connection con = Database.startConnection();
 			
 			String sql = "INSERT INTO REPORT" 
-			+ "(rep_Name, rep_Date, Comment1, Comment2, Comment3,rep_Type,rep_Target,Eva11,Eva12,Eva13,Eva14,Eva15,Eva21,Eva22,Eva23,Eva31,Eva32,Eva33) "
-			+ "VALUES "+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			+ "(rep_Name,  rep_Date, Comment1, Comment2, Comment3,rep_Type,rep_Target,Eva11,Eva12,Eva13,Eva14,Eva15,Eva21,Eva22,Eva23,Eva31,Eva32,Eva33,templ_ID_FK) "
+			+ "VALUES "+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			
 			
@@ -30,6 +36,7 @@ public class ReportDA {
 			
 			//Set the SQL variables
 			preparedStatement.setString(1, name);
+			
 			preparedStatement.setString(2, date);
 			preparedStatement.setString(3,comment1);
 			preparedStatement.setString(4,comment2);
@@ -52,7 +59,7 @@ public class ReportDA {
 			preparedStatement.setInt(16, eva31);
 			preparedStatement.setInt(17, eva32);
 			preparedStatement.setInt(18, eva33);
-
+			preparedStatement.setInt(19,templ_ID_FK);		
 			
 			// execute insert SQL statement
 			preparedStatement.executeUpdate();
@@ -66,6 +73,73 @@ e.printStackTrace();
 
  }
 		
+	public static List<ReportBean> getReport () {
+		//Returns all rows in the Report template table as a list of objects
+		List<ReportBean> reportArr = new ArrayList<ReportBean>();
+		
+		try {
+			ResultSet results;
+			System.out.println("Creating connection...");
+			Connection con = Database.startConnection();
+			String query = "SELECT * from REPORT";
+			System.out.println("Creating statement...");
+			Statement statement = con.createStatement();
+			System.out.println("Running query...");
+			results = statement.executeQuery(query);		
+			
+			//Create the Template
+			while (results.next()) {
+				System.out.println(" - Creating Template - ");
+				ReportBean report = new ReportBean ();
+				report.setName(results.getString("reportTempl_Name"));
+				report.setTempl_ID_FK(results.getString("report_Temps"));
+				report.setDate(results.getString("templ_Date"));
+				
+				report.setComment1(results.getString("Comment1"));
+				report.setComment2(results.getString("Comment2"));
+				report.setComment3(results.getString("Comment3"));
+				
+				
+		
+				report.setEva11(results.getInt("eva11"));
+
+				report.setEva12(results.getInt("eva12"));
+
+				report.setEva13(results.getInt("eva13"));
+			
+				report.setEva14(results.getInt("eva14"));
+	
+				report.setEva15(results.getInt("eva15"));
+				
+				
+				report.setEva21(results.getInt("eva21"));
+	
+				report.setEva22(results.getInt("eva22"));
+		
+				report.setEva23(results.getInt("eva23"));
+				
+	
+				report.setEva31(results.getInt("eva31"));
+
+				report.setEva32(results.getInt("eva32"));
+
+				report.setEva33(results.getInt("eva33"));
+				
+			
+				
+				System.out.println("Name: + " + report.getName());
+				//System.out.println(department.getFloor());
+				reportArr.add(report);
+			}
+		} catch (Exception e) {
+			System.out.println("Error!");
+			System.out.println(e);
+			return null;
+		}
+		System.out.println("Returning " + reportArr.size() + "Report Templates");
+		return reportArr;
+	}
+	
 		
 	}
 	
