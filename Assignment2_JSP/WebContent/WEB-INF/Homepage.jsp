@@ -16,10 +16,12 @@
 	</style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/Banner.jsp" />
 	<h1>Homepage</h1>
 	<form action="HomepageServlet">
 		<input type="submit" value="Departments" name="pageSelect">
 		<input type="submit" value="Attendance" name="pageSelect">
+		<input type="submit" value="Groups" name="pageSelect">
 	</form>
 </body>
 </html>

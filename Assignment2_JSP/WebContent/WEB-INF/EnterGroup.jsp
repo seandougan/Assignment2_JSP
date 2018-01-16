@@ -1,11 +1,34 @@
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+
+    <!--  SCRIPTLET TO PRE-PROCESS BEFORE RENDER -->
+    <%@ page import="utility.SessionAuthentication" %>
+<% 
+//GRAB SESSION
+HttpSession ss = request.getSession();
+//CHECK SESSION
+if(SessionAuthentication.authenticateSession(ss)){
+	System.out.println("User is not logged in or session expired, relog please");
+	response.sendRedirect("index.jsp");
+}
+%>
+<!-- AFTER PAGE VALIDATION LOAD DEPENDENCIES -->
+ <%@ page import="utility.CookieFinder" %>
+ <% CookieFinder ckF = new CookieFinder(); 
+ 
+//INSTANTIATE SITE COOKIES INTO OBJECT
+	Cookie[] cookies = request.getCookies();
+ %>
+ 
 <html>
 <head> 
 <title>Groups</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/Banner.jsp" />
+
 
 <form action = "EnterGroupServlet" method = "post">
 	<h1>Group Entry</h1>
