@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+   <%@ page import="utility.Database" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,18 +20,62 @@ margin-bottom: 0.5em;
 border-bottom: 1px solid #aaa;
 padding: 0.5em 0 1em 0;
 border: "solid";
-
-
 }
 
 </style>
+
+
+
+
+<script>
+
+function tempBox() {
+	
+var e = document.getElementById("crit11");
+var crit11 = e.options[e.selectedIndex].value;
+
+
+document.getElementById("selected").innerHTML = crit11;
+                                 //^^ set the text to the selected value
+
+}
+</script>
+
+<select name="reportTemps" id="Templ">
+
+<% Connection con = Database.startConnection();
+ResultSet rs = null;
+
+Statement statement = null;
+String query1 = "SELECT template_name FROM REPORT_TEMPLATE";
+String query2 = "SELECT department_name FROM DEPARTMENTS";
+String reportTemp_Name = request.getParameter("reportTemp_Name");
+System.out.println(reportTemp_Name);
+statement = con.createStatement();
+rs = statement.executeQuery(query1);	
+
+%>
 </head>
 
 <body>
 
 
 <div>
-<span>Report Template: <select name="reports"></select> </span>
+
+<%
+while (rs.next()) {
+%>
+
+
+<option value = '<%=rs.getString("template_name")%>' > <%=rs.getString("template_name")%></option>
+
+
+<% }
+con.close();
+statement.close();
+rs.close();
+%>
+</select>
 
 <span id="title">Report Title: <input type="text" name="title"></input> </span>
 
@@ -38,6 +84,8 @@ border: "solid";
 <p>Department:<select name="departments"></select> </p>
 
 <p>Report Type:<input type="radio" name="type" value="group"> Group</input></p>
+
+
 
 <input type="radio" name="type" value="employee"> Employee</input>
 
@@ -54,11 +102,6 @@ border: "solid";
 	
 	<span>Criteria 1</span> <input type="text" name="crit11"></input>
 	<label><span>Maximum </span></label><select name="max11">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
 </select>															<br> 
 	<span>Criteria 2</span> <input type="text" name="crit12"></input>
 	<label><span>Maximum </span></label><select name="max12">

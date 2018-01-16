@@ -120,9 +120,33 @@ CREATE TABLE REPORT
 (
 
 rep_ID INT (11) AUTO_INCREMENT PRIMARY KEY
+templ_ID_FK INT (11) NOT NULL, 
 
+rep_Name VARCHAR (255),
+rep_Date VARCHAR (255),
 
+Comment1 VARCHAR (255),
+Comment2 VARCHAR (255),
+Comment3 VARCHAR (255),
 
+rep_Type VARCHAR (255),
+rep_Target VARCHAR (255),
+
+Eva11 int (5),
+Eva12 int (5),
+Eva13 int (5),
+Eva14 int (5),
+Eva15 int (5),
+
+Eva21 int (5),
+Eva22 int (5),
+Eva23 int (5),
+
+Eva31 int (5),
+Eva32 int (5),
+Eva33 int (5),
+
+FOREIGN KEY (templ_ID_FK) REFERENCES REPORT_TEMPLATE() ON DELETE CASCADE
 );
 
 #This Section will add necessary records for testing to the DB
@@ -164,3 +188,5 @@ INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
 INSERT INTO REPORT_TEMPLATE (department_name, template_name, template_date, Section1, Section2, Section3,Criteria11,Maximum11,Criteria12,Maximum12,Criteria13,Maximum13,Criteria14,Maximum14,Criteria15,Maximum15,Criteria21,Maximum21,Criteria22,Maximum22,Criteria23,Maximum23,Criteria31,Maximum31,Criteria32,Maximum32,Criteria33,Maximum33) VALUES
 ('Database Development', 'Flare Team Review', '11/07/2016','Contribution','Responsibility','Value','Research and Gathering',5,'Sharing Information',5,'Using Time Wisely',5,'Ready to Work',5,NULL,NULL,'FulFill Teams Role',5,'Sharing Work Equally',5,'Helping Team Members',5,'Listen to Others',5,'Include Teammates',5,'Make Fair Decisions',5);
 
+INSERT INTO REPORT(rep_Name,rep_Date,comment1,comment2,comment3,rep_type,rep_target,eva11,eva12,eva13,eva14,eva15,eva21,eva22,eva23,eva31,eva32,eva33) VALUES
+('','11/07/1996','Contributed very well to the Team, good job!','Very responsible team member that took charge.','Very valuable to the team','');

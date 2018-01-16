@@ -40,8 +40,35 @@ public class ReportTemplDA {
 				reportTempl.setDepartment(results.getString("department_name"));
 				reportTempl.setDate(results.getString("templ_Date"));
 				reportTempl.setSection1(results.getString("Section1"));
+				reportTempl.setSection2(results.getString("Section2"));
+				reportTempl.setSection3(results.getString("Section3"));
 				
-				//reportTempl.setDate(results.getInt("department_floor"));
+				
+				reportTempl.setCrit11(results.getString("crit11"));
+				reportTempl.setMax11(results.getInt("max11"));
+				reportTempl.setCrit12(results.getString("crit12"));
+				reportTempl.setMax12(results.getInt("max12"));
+				reportTempl.setCrit13(results.getString("crit13"));
+				reportTempl.setMax13(results.getInt("max13"));
+				reportTempl.setCrit14(results.getString("crit14"));
+				reportTempl.setMax14(results.getInt("max14"));
+				reportTempl.setCrit15(results.getString("crit15"));
+				reportTempl.setMax15(results.getInt("max15"));
+				
+				reportTempl.setCrit21(results.getString("crit21"));
+				reportTempl.setMax21(results.getInt("max21"));
+				reportTempl.setCrit22(results.getString("crit22"));
+				reportTempl.setMax22(results.getInt("max22"));
+				reportTempl.setCrit23(results.getString("crit23"));
+				reportTempl.setMax23(results.getInt("max23"));
+				
+				reportTempl.setCrit31(results.getString("crit31"));
+				reportTempl.setMax31(results.getInt("max31"));
+				reportTempl.setCrit32(results.getString("crit32"));
+				reportTempl.setMax32(results.getInt("max32"));
+				reportTempl.setCrit33(results.getString("crit33"));
+				reportTempl.setMax33(results.getInt("max33"));
+				
 				System.out.println("Name: + " + reportTempl.getName());
 				//System.out.println(department.getFloor());
 				reportTemplArr.add(reportTempl);
@@ -61,7 +88,7 @@ public class ReportTemplDA {
 		  
 			// Request Parameters
 			   
-				 System.out.println("Entering in Employees");
+				 System.out.println("Entering in Template");
 			  
 			  try {
 
