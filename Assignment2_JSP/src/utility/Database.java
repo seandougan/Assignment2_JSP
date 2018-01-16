@@ -1,7 +1,7 @@
 /*
  * Date: January 4th, 2018,
  * Group Members: Sean Dougan - 101029633, Matthew McCarthy - 101009842, Michael Van Dyke - 101008864
- * Gregory Uchitel - 100322200, James Massle - 101025072
+ * Gregory Uchitel - 100322200, James Massel - 101025072
  * Class Description: This class is meant to manage a singleton connection to the database, opening and closing
  * the connection
  */

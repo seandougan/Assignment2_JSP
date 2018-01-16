@@ -1,3 +1,10 @@
+/*
+ * Date: January 4th, 2018,
+ * Group Members: Sean Dougan - 101029633, Matthew McCarthy - 101009842, Michael Van Dyke - 101008864
+ * Gregory Uchitel - 100322200, James Massel - 101025072
+ * Class Description: This class is meant access the Database for Report
+ * the connection
+ */
 package database;
 
 import java.sql.Connection;
@@ -73,7 +80,7 @@ e.printStackTrace();
 
  }
 		
-	public static List<ReportBean> getReport () {
+	public static List<ReportBean> getReport (int PK) {
 		//Returns all rows in the Report template table as a list of objects
 		List<ReportBean> reportArr = new ArrayList<ReportBean>();
 		
@@ -81,7 +88,7 @@ e.printStackTrace();
 			ResultSet results;
 			System.out.println("Creating connection...");
 			Connection con = Database.startConnection();
-			String query = "SELECT * from REPORT";
+			String query = "SELECT * FROM REPORT WHERE templ_ID_FK ="+PK;
 			System.out.println("Creating statement...");
 			Statement statement = con.createStatement();
 			System.out.println("Running query...");
@@ -89,11 +96,11 @@ e.printStackTrace();
 			
 			//Create the Template
 			while (results.next()) {
-				System.out.println(" - Creating Template - ");
+				System.out.println(" - Creating Report - ");
 				ReportBean report = new ReportBean ();
-				report.setName(results.getString("reportTempl_Name"));
-				report.setTempl_ID_FK(results.getString("report_Temps"));
-				report.setDate(results.getString("templ_Date"));
+				report.setName(results.getString("rep_Name"));
+				report.setTempl_ID_FK(results.getString("templ_ID_FK"));
+				report.setDate(results.getString("rep_Date"));
 				
 				report.setComment1(results.getString("Comment1"));
 				report.setComment2(results.getString("Comment2"));
@@ -127,7 +134,7 @@ e.printStackTrace();
 				
 			
 				
-				System.out.println("Name: + " + report.getName());
+				
 				//System.out.println(department.getFloor());
 				reportArr.add(report);
 			}
@@ -136,7 +143,7 @@ e.printStackTrace();
 			System.out.println(e);
 			return null;
 		}
-		System.out.println("Returning " + reportArr.size() + "Report Templates");
+		
 		return reportArr;
 	}
 	
