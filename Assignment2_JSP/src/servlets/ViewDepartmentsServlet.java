@@ -7,12 +7,17 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import database.DepartmentsDA;
+import utility.Department;
 
 @WebServlet("/ViewDepartmentsServlet")
 public class ViewDepartmentsServlet extends HttpServlet {
@@ -24,6 +29,16 @@ public class ViewDepartmentsServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("EnterDepartmentsServlet() called");
+		String action = request.getParameter("action");
+		System.out.println("action = " + action);
+		if (action == null) {
+			response.setContentType("text/html");
+			request.setAttribute("action", "viewDepartmentsLoad");
+			List<Department> departments = new ArrayList<>();
+			departments = DepartmentsDA.getDepartments();
+			request.setAttribute("departments", departments);
+			request.getRequestDispatcher("/WEB-INF/ViewDepartments.jsp").forward(request, response);
+		}
 		System.out.println("End of doGet()");
 	}
 	

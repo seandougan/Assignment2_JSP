@@ -9,6 +9,7 @@ package database;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class DepartmentsDA {
 	
 	
 	public static List<Department> getDepartments () {
+		System.out.println("getDepartments() called");
 		//Returns all rows in the DEPARTMENT table as a list of Department objects
 		List<Department> departments = new ArrayList<Department>();
 		
@@ -30,13 +32,14 @@ public class DepartmentsDA {
 			String query = "SELECT * from DEPARTMENT";
 			System.out.println("Creating statement...");
 			Statement statement = con.createStatement();
-			System.out.println("Running query...");
+			System.out.println("Running query - " + query);
 			results = statement.executeQuery(query);		
 			
 			//Create the list of departments
 			while (results.next()) {
 				System.out.println(" - Creating DEPARTMENT - ");
 				Department department = new Department ();
+				department.setDepartmentId(results.getInt("department_Id"));
 				department.setName(results.getString("department_Name"));
 				department.setFloor("Floor: " + results.getInt("department_floor"));
 				System.out.println("Name: + " + department.getName());
@@ -49,6 +52,7 @@ public class DepartmentsDA {
 			return null;
 		}
 		System.out.println("Returning " + departments.size() + " departments");
+		System.out.println("End of getDepartments()");
 		return departments;
 	}
 
@@ -72,8 +76,9 @@ public class DepartmentsDA {
 		return successCheck;
 	}
 	
-	public static String getFirstDepartment() {
-		String department = null;
+	public static int getFirstDepartment() {
+		System.out.println("getFirstDepartment() called");
+		int departmentId = 0;
 		try {
 		ResultSet results;
 		System.out.println("Creating connection...");
@@ -83,13 +88,18 @@ public class DepartmentsDA {
 		Statement statement = con.createStatement();
 		System.out.println("Running query - " + query);
 		results = statement.executeQuery(query);
-		department = results.getString("department_Name");
-		} catch (Exception e) {
+		results.next();
+		String departmentName = results.getString("department_Name");
+		departmentId = results.getInt("department_ID");
+		System.out.println("Returning department: " + departmentName + " - ID = " + departmentId);
+		} catch (SQLException e) {
 			System.out.println("Error!");
 			System.out.println(e);
-			return null;
+			e.printStackTrace();
+			return departmentId;
 		}
-		return department;
+		System.out.println("End of getFirstDepartment()");
+		return departmentId;
 	}
 }
 	

@@ -26,22 +26,36 @@
 	</style>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/Banner.jsp" />
 	<h1>View Attendance</h1>
-	<select>
-		<c:forEach items="${departments}" var="department">
-			<option><c:out value="${department.name}"/></option>
-		</c:forEach>
-	</select>
+	<form action="ViewAttendanceServlet">
+		<select name="deptId" >
+			<c:forEach items="${departments}" var="department">
+				<option value="${department.departmentId}"><c:out value="${department.name}"/></option>
+			</c:forEach>
+		</select>
+		<input type="submit" name="action" value="Get Attendance">
+	</form> 
 	
 	<table>
 		<tr>
+			<th>Employee Num.</th>
 			<th>Last Name</th>
 			<th>First Name</th>
-			<th>Employee Num.</th>
 			<th>December 1, 2017</th>
 			<th>December 3, 2017</th>
 			<th>December 4, 2017</th>
 		</tr>
+		<c:forEach items="${attendances}" var="attendance">
+			<tr>
+				<td><c:out value="${attendance.employeeId}"/></td>
+				<td><c:out value="${attendance.lastName}"/></td>
+				<td><c:out value="${attendance.firstName}"/></td>
+				<td><c:out value="${attendance.present1}"/></td>
+				<td><c:out value="${attendance.present2}"/></td>
+				<td><c:out value="${attendance.present3}"/></td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

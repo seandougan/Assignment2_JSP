@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/Banner.jsp" />
 <h1>Department Entry</h1>
 
 
@@ -25,7 +26,7 @@
 			out.println("<b>Department entered successfully!</b>");
 		}
 			else {
-				out.println("<b><i>Department entry failed.</i></b>");
+				out.println("<b><i>Department entry failed - " + request.getAttribute("reason") +"</i></b>");
 			}
 		}
 	%>

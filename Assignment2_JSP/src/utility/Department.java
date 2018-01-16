@@ -7,12 +7,21 @@
 package utility;
 
 public class Department {
+	int departmentId;
 	String name;
 	String floor;
 	
 	public Department () {}
 	
-	
+	public int getDepartmentId() {
+		return departmentId;
+	}
+
+
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
+	}
+
 	public String getName() {
 		return name;
 	}

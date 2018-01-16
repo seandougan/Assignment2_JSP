@@ -4,6 +4,40 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-
-
+  
+  	<servlet>
+	  	<servlet-name>EnterDepartment</servlet-name>
+	  	<servlet-class>servlets.EnterDepartmentServlet</servlet-class>
+	</servlet>
+  	<servlet-mapping>
+	  <servlet-name>EnterDepartment</servlet-name>
+	  <url-pattern>/EnterDepartment.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	 	<servlet-name>ViewDepartments</servlet-name>
+		<servlet-class>servlets.ViewDepartmentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewDepartments</servlet-name>
+		<url-pattern>/ViewDepartments.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	  	<servlet-name>EnterAttendance</servlet-name>
+	  	<servlet-class>servlets.EnterAttendanceServlet</servlet-class>
+	  </servlet>
+	<servlet-mapping>
+		<servlet-name>EnterAttendance</servlet-name>
+		<url-pattern>/EnterAttendance.jsp</url-pattern>
+	</servlet-mapping>
+	 
+	 <servlet>
+	 	<servlet-name>ViewAttendance</servlet-name>
+		<servlet-class>servlets.ViewAttendanceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewAttendance</servlet-name>
+		<url-pattern>/ViewAttendance.jsp</url-pattern>
+	</servlet-mapping>
 </web-app>

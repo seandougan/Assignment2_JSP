@@ -8,18 +8,18 @@ package utility;
 
 public class Attendance {
 	
-	private int empId;
+	private int employeeId;
 	private String firstName;
 	private String lastName;
-	private boolean present1;
-	private boolean present2;
-	private boolean present3;
+	private String present1;
+	private String present2;
+	private String present3;
 
-	public int getEmpId() {
-		return empId;
+	public int getEmployeeId() {
+		return employeeId;
 	}
-	public void setEmpId(int empId) {
-		this.empId = empId;
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -33,23 +33,38 @@ public class Attendance {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public boolean isPresent1() {
+	public String getPresent1() {
 		return present1;
 	}
 	public void setPresent1(boolean present1) {
-		this.present1 = present1;
+		if (present1) {
+			this.present1 = "Present";
+		}
+		else {
+			this.present1 = "Not Present";
+		}
 	}
-	public boolean isPresent2() {
+	public String getPresent2() {
 		return present2;
 	}
 	public void setPresent2(boolean present2) {
-		this.present2 = present2;
+		if (present2) {
+			this.present2 = "Present";
+		}
+		else {
+			this.present2 = "Not Present";
+		}
 	}
-	public boolean isPresent3() {
+	public String getPresent3() {
 		return present3;
 	}
 	public void setPresent3(boolean present3) {
-		this.present3 = present3;
+		if (present3) {
+			this.present3 = "Present";
+		}
+		else {
+			this.present3 = "Not Present";
+		}
 	}
 
 }

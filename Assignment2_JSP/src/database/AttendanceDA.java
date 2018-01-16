@@ -35,7 +35,7 @@ public class AttendanceDA {
 			while (results.next()) {
 				System.out.println(" - Creating Attendance - ");
 				Attendance attendance = new Attendance();
-				attendance.setEmpId(results.getInt("employee_ID_FK"));
+				attendance.setEmployeeId(results.getInt("employee_ID_FK"));
 				attendance.setPresent1(convertToBool(results.getInt("present1")));
 				attendance.setPresent2(convertToBool(results.getInt("present2")));
 				attendance.setPresent3(convertToBool(results.getInt("present3")));
@@ -50,15 +50,16 @@ public class AttendanceDA {
 	return attendances;
 	}
 	
-	public static List<Attendance> getDptAttendance(String department) {
+	public static List<Attendance> getDptAttendance(int department) {
 		//Returns a list of all employee attendance in a given department
+		System.out.println("getDptAttendance() called");
 		List<Attendance> deptAttendance = new ArrayList<>();
 		try {
 			//Gets a list of all employees in a specified department
 			ResultSet employeeResults;
 			System.out.println("Creating connection...");
 			Connection con = Database.startConnection();
-			String query = "SELECT * from EMPLOYEE WHERE department = '" + department + "'";
+			String query = "SELECT * from EMPLOYEE WHERE department_ID_FK = " + department;
 			System.out.println("Creating statement...");
 			Statement employeeStatement = con.createStatement();
 			System.out.println("Running query - " + query);
@@ -71,20 +72,20 @@ public class AttendanceDA {
 				System.out.println("Creating statement...");
 				Statement attendanceStatement = con.createStatement();
 				System.out.println("Creating query...");
-				query = "SELECT * FROM ATTENDANCE WHERE employee_ID = " + employeeId;
+				query = "SELECT * FROM ATTENDANCE WHERE employee_ID_FK = " + employeeId;
 				System.out.println("Running query - " + query);
 				attendanceResult = attendanceStatement.executeQuery(query);
 				while (attendanceResult.next()) {
 					//Create an attendance object from the selected employees attendance and add it to a list
 					System.out.println(" - Creating Attendance - ");
 					Attendance attendance = new Attendance();
-					attendance.setEmpId(attendanceResult.getInt("employee_ID_FK"));
+					attendance.setEmployeeId(attendanceResult.getInt("employee_ID_FK"));
 					attendance.setFirstName(employeeResults.getString("employee_FirstName"));
 					attendance.setLastName(employeeResults.getString("employee_LastName"));
 					attendance.setPresent1(convertToBool(attendanceResult.getInt("present1")));
 					attendance.setPresent2(convertToBool(attendanceResult.getInt("present2")));
 					attendance.setPresent3(convertToBool(attendanceResult.getInt("present3")));
-					System.out.println(" Attendance for employee " + attendance.getEmpId() +" created.");
+					System.out.println(" Attendance for employee " + attendance.getEmployeeId() +" created.");
 					deptAttendance.add(attendance);
 				}
 			}
@@ -94,20 +95,18 @@ public class AttendanceDA {
 			return null;
 		}
 		System.out.println("Returning deptAttendance with a size of " + deptAttendance.size());
+		System.out.println("End of getDptAttendance()");
 		return deptAttendance;
 	}
 	
 	public static boolean convertToBool(Integer num) {
 		//Converts null, 0, or 1s to their boolean equivalent
-		System.out.println("Converting " + num + " to a boolean");
 		boolean present;
 		
 		if (num == null || num == 0) {
-			System.out.println("present  = false");
 			present = false;
 		}
 		else {
-			System.out.println("present = true");
 			present = true;
 		}
 		return present;

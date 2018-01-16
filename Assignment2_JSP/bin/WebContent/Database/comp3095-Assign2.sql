@@ -107,13 +107,12 @@ INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
 INSERT INTO  DEPARTMENT(department_Name, department_Floor) VALUES
 ('Human Resources', 6);
 
-#dummy employees
-INSERT INTO EMPLOYEE(employee_ID, department_ID_FK, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
-(20139568, 1, 'John', 'Doe', 'Team Lead', 'john.doe@gmaill.com', 4165524125, 2017);
-INSERT INTO EMPLOYEE(employee_ID, department_ID_FK, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
-(20139587, 1, 'David', 'Tatum', 'Web Dev', 'dtatum@hotmail.com', 6478596352, 2015);
-INSERT INTO EMPLOYEE(employee_ID, department_ID_FK, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
-(20139741, 2, 'Avery', 'Mollis', 'Database Technician', 'ave-mollis87@gmail.com', 6473529658, 2014);
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139568, 'John', 'Doe', 'Team Lead', 'john.doe@gmaill.com', 4165524125, 2017);
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139587, 'David', 'Tatum', 'Web Dev', 'dtatum@hotmail.com', 6478596352, 2015);
+INSERT INTO EMPLOYEE(employee_ID, employee_FirstName, employee_LastName, employee_Role, employee_Email, employee_PhoneNumber, employee_YearHired) VALUES
+(20139741, 'Avery', 'Mollis', 'Database Technician', 'ave-mollis87@gmail.com', 6473529658, 2014);
 
 INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
 (20139568, 1, 1, 1);

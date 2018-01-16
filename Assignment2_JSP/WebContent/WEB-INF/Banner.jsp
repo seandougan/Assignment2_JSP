@@ -28,7 +28,7 @@
     Departments
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="EnterDepartments.jsp">Enter Department</a>
+    <a class="dropdown-item" href="EnterDepartment.jsp">Enter Department</a>
      <div class="dropdown-divider">
     <a class="dropdown-item" href="ViewDepartments.jsp">View Department</a>
     </div>
