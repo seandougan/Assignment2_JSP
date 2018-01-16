@@ -51,7 +51,7 @@ public class GroupViewServlet extends HttpServlet {
 				view.forward(request, response);
 			}
 			else if (InfoSubmitted.equals("Home")) {
-				 request.getRequestDispatcher("/WEB-INF/Homepage.jsp").forward(request, response);
+				 request.getRequestDispatcher("Homepage.jsp").forward(request, response);
 			}else {
 				request.setAttribute("groups", groups);
 				RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/ViewGroup.jsp");

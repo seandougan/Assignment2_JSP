@@ -37,6 +37,10 @@ public class HomepageServlet extends HttpServlet {
 			System.out.println("Entering Attendance.jsp");
 			request.getRequestDispatcher("/WEB-INF/Attendance.jsp").forward(request, response);
 		}
+		else if (buttonCheck.equals("Groups")) {
+			System.out.println("/WEB-INF/GroupPage.jsp");
+			request.getRequestDispatcher("/WEB-INF/GroupPage.jsp").forward(request, response);
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

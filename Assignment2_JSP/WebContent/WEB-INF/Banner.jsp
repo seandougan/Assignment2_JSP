@@ -58,9 +58,9 @@
     Groups
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="EnterDepartments.jsp">Enter Group</a>
+    <a class="dropdown-item" href="EnterGroupServlet">Enter Group</a>
      <div class="dropdown-divider">
-    <a class="dropdown-item" href="ViewDepartments.jsp">View Group</a>
+    <a class="dropdown-item" href="GroupViewServlet">View Group</a>
     </div>
   </div>
 	</div>  

@@ -36,6 +36,13 @@ if(SessionAuthentication.authenticateSession(ss)){
 <h1 class="text-center">Welcome Back
 <%= ckF.findCookie(cookies) %>!
 </h1>		
-
+	<form action="HomepageServlet">
+		<h3>Departments</h3>
+		<input type="submit" value="Departments" name="pageSelect">
+		<h3>Attendance</h3>
+		<input type="submit" value="Attendance" name="pageSelect">
+		<h3>Groups</h3>
+		<input type="submit" value="Groups" name="pageSelect">
+	</form>
 </body>
 </html>
