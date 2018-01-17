@@ -44,14 +44,37 @@ CREATE TABLE EMPLOYEE
 #GROUPS
 CREATE TABLE GROUPS
 (
+	
 	group_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
-	department_ID_FK INT (11) NOT NULL ,
-    group_Name VARCHAR(255) UNIQUE,
-    group_Manager VARCHAR(255),
-    group_Role VARCHAR(55),
-    group_Description VARCHAR(255),
-    FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
+    
+	department_ID_FK INT (11) ,
+    
+	group_Name VARCHAR(255) UNIQUE,
+    
+	group_Manager VARCHAR(255),
+	
+	group_Role VARCHAR(55),
+    
+	group_Description VARCHAR(255),
+    
+	group_Employee1 VARCHAR(40),
+    
+	group_Employee2 VARCHAR(40),
+    
+	group_Employee3 VARCHAR(40),
+    
+	group_Employee4 VARCHAR(40),
+    
+	group_Employee5 VARCHAR(40),
+	
+	group_Employee6 VARCHAR(40),
+    
+	group_Department VARCHAR(255) ,
+    
+	FOREIGN KEY (department_ID_FK) REFERENCES DEPARTMENT(department_ID) ON DELETE CASCADE
+
 );
+
 
 #EMPLOYEE_GROUPS JUNCTION TABLE
 CREATE TABLE EMPLOYEE_GROUPS
@@ -120,3 +143,8 @@ INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
 (20139587, 1, 1, 0);
 INSERT INTO ATTENDANCE(employee_ID_FK, present1, present2, present3) VALUES
 (20139741, 0, 1, 1);
+
+INSERT INTO Groups(group_Name, group_Department, group_Employee1, group_Employee2, group_Employee3, group_Employee4, group_Employee5, group_Employee6) VALUES('The Seinfields', 'Accounting', 'jeff hobson', 'chester tester', 'e t', 'rob robertson', 'jane janeson', 'who whosom');
+INSERT INTO Groups(group_Name, group_Department, group_Employee1, group_Employee2, group_Employee3, group_Employee4, group_Employee5, group_Employee6) VALUES('The Cats', 'Finance', 'jeff bridges', 'the rock', 'E T', 'jason smith', 'jane doe', 'first last');
+
+
