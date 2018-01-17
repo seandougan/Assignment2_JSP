@@ -22,20 +22,39 @@
 	</style>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/Banner.jsp" />
 	<h1>Enter Attendance</h1>
-	<select>
-		<c:forEach items="${departments}" var="department">
-			<option><c:out value="${department.name}"/></option>
-		</c:forEach>
-	</select>
-	<table>
-		<tr>
-			<th>Last Name</th>
-			<th>First Name</th>
-			<th>Employee Num.</th>
-			<th>Present</th>
-		</tr>
-	</table>
-
+	<form action="EnterAttendanceServlet">
+		<select name="deptId" >
+			<c:forEach items="${departments}" var="department">
+				<option value="${department.departmentId}"><c:out value="${department.name}"/></option>
+			</c:forEach>
+		</select>
+		<input type="submit" name="action" value="Get Attendance">
+	</form> 
+	
+	<form action="EnterAttendanceServlet">
+		<table>
+			<tr>
+				<th>Employee Num.</th>
+				<th>Last Name</th>
+				<th>First Name</th>
+				<th>December 1, 2017</th>
+				<th>December 3, 2017</th>
+				<th>December 4, 2017</th>
+			</tr>
+			<c:forEach items="${attendances}" var="attendance">
+				<tr>
+					<td><c:out value="${attendance.employeeId}"/></td>
+					<td><c:out value="${attendance.lastName}"/></td>
+					<td><c:out value="${attendance.firstName}"/></td>
+					<td><input type="checkbox" value="${attendance.present1}"></td>
+					<td><input type="checkbox" value="${attendance.present2}"></td>
+					<td><input type="checkbox" value="${attendance.present3}"></td>
+				</tr>
+			</c:forEach>
+		</table>
+		<input type="submit" name="action" value="Submit">
+	</form>
 </body>
 </html>

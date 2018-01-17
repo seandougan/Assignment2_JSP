@@ -5,10 +5,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Enter Attendance</title>
 	<style>
-		input {
-			margin: auto;
-			display: block;
-		}
 		h1 {
 			text-align: center;
 		}
